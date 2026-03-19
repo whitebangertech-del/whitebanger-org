@@ -10,12 +10,14 @@
     "dev": "npx serve . -p 3000",
     "build": "node build.cjs",
     "start": "npm run dev",
-    "preview": "npx serve dist -p 8080"
+    "preview": "npx serve dist -p 8080",
+    "setup-demo": "node setup-demo-users.js"
   },
   "devDependencies": {
     "serve": "^14.2.4"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0"
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.6.1"
   }
 }

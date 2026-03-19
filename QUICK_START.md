@@ -107,27 +107,44 @@ The platform uses a comprehensive design system defined in `css/variables.css`:
 
 ---
 
-## 🔒 Authentication
+## 🔒 Authentication & Demo Setup
 
-### Demo Accounts (Development Only)
+### ⚡ Quick Setup (3 Steps)
+
+**Step 1:** Get your Supabase service role key
+- Dashboard → Settings → API → Copy **service_role** key
+
+**Step 2:** Add to `.env` file
+```env
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+```
+
+**Step 3:** Run automated setup
+```bash
+npm run setup-demo
+```
+
+### Demo Accounts (After Setup)
 
 **Admin:**
-- Email: admin@gmail.com
-- Password: 123
+- Email: admin@whitebanger.org
+- Password: Admin@123
 
 **Teacher:**
-- Email: teacher@gmail.com
-- Password: 123
+- Email: teacher@whitebanger.org
+- Password: Teacher@123
 
 **Student:**
-- Email: student@gmail.com
-- Password: 123
+- Email: student@whitebanger.org
+- Password: Student@123
+
+> 📖 **Detailed Guide:** See [QUICK_FIX_DEMO_LOGIN.md](QUICK_FIX_DEMO_LOGIN.md)
 
 > ⚠️ **Important:** Change these credentials before production deployment!
 
 ### Production Setup
-1. Remove demo credentials from `erp/erp-data.js`
-2. Use Supabase Auth for user management
+1. Delete demo users from Supabase Auth
+2. Change all demo passwords
 3. Implement password reset functionality
 4. Enable email verification
 

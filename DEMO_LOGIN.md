@@ -1,10 +1,22 @@
 # Demo Login Credentials & Testing Guide
 
-## Important Note
+## ⚡ Quick Setup (RECOMMENDED)
 
-Demo user accounts must be created manually through the Supabase Auth Dashboard. The database schema and profiles are ready, but Supabase requires users to be created through their authentication system.
+**Automated Setup** - Create all demo users with one command:
 
-## How to Create Demo Users
+```bash
+npm run setup-demo
+```
+
+See **[QUICK_FIX_DEMO_LOGIN.md](QUICK_FIX_DEMO_LOGIN.md)** for the 3-step quick fix guide!
+
+---
+
+## Alternative: Manual Setup
+
+If you prefer manual setup or the automated script doesn't work, follow these steps:
+
+### How to Create Demo Users Manually
 
 ### Step 1: Access Supabase Dashboard
 1. Go to [https://supabase.com/dashboard](https://supabase.com/dashboard)

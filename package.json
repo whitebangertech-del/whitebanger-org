@@ -8,9 +8,9 @@
   "type": "module",
   "scripts": {
     "dev": "npx serve . -p 3000",
-    "build": "node minify.cjs",
+    "build": "node build.cjs",
     "start": "npm run dev",
-    "preview": "npx serve . -p 8080"
+    "preview": "npx serve dist -p 8080"
   },
   "devDependencies": {
     "serve": "^14.2.4"

@@ -1,0 +1,15 @@
+{
+  "name": "whitebanger-org",
+  "version": "1.0.0",
+  "description": "WhiteBanger.Org Static Website",
+  "main": "index.html",
+  "author": "Antigravity",
+  "private": true,
+  "scripts": {
+    "build": "node minify.js",
+    "start": "npx serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

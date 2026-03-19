@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admission Enquiry — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand">
+      <div class="erp-brand-logo">WB</div>
+      <div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div>
+    </div>
+    <nav class="erp-sidebar-nav">
+      <div class="erp-nav-section">
+        <div class="erp-nav-label">Main</div>
+        <a href="admin-dashboard.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+          <span class="erp-nav-text">Dashboard</span>
+        </a>
+        <a href="admin-students.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+          <span class="erp-nav-text">Students</span>
+        </a>
+        <a href="admin-teachers.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span>
+          <span class="erp-nav-text">Teachers</span>
+        </a>
+        <a href="admin-courses.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+          <span class="erp-nav-text">Courses</span>
+        </a>
+      </div>
+      <div class="erp-nav-section">
+        <div class="erp-nav-label">Academics</div>
+        <a href="admin-attendance.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+          <span class="erp-nav-text">Attendance</span>
+        </a>
+        <a href="admin-exams.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+          <span class="erp-nav-text">Exams</span>
+        </a>
+        <a href="admin-exam-schedule.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <span class="erp-nav-text">Exam Schedule</span>
+        </a>
+        <a href="admin-results.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+          <span class="erp-nav-text">Results</span>
+        </a>
+        <a href="admin-materials.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span>
+          <span class="erp-nav-text">Materials</span>
+        </a>
+      </div>
+      <div class="erp-nav-section">
+        <div class="erp-nav-label">Admissions & Finance</div>
+        <a href="admin-enquiry.html" class="erp-nav-link active">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
+          <span class="erp-nav-text">Admission Enquiry</span>
+        </a>
+        <a href="admin-fees.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+          <span class="erp-nav-text">Fee Management</span>
+        </a>
+        <a href="admin-payments.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>
+          <span class="erp-nav-text">Online Payments</span>
+        </a>
+        <a href="admin-crm.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+          <span class="erp-nav-text">CRM Leads</span>
+        </a>
+      </div>
+      <div class="erp-nav-section">
+        <div class="erp-nav-label">Documents & Verification</div>
+        <a href="admin-id-card.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="3"/><path d="M15 8h3M15 12h3"/><path d="M7 19c0-1.5 1.34-3 3-3s3 1.5 3 3"/></svg></span>
+          <span class="erp-nav-text">ID Cards</span>
+        </a>
+        <a href="admin-admit-card.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+          <span class="erp-nav-text">Admit Cards</span>
+        </a>
+        <a href="admin-certificates.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+          <span class="erp-nav-text">Certificates</span>
+        </a>
+        <a href="certificate-verify.html" class="erp-nav-link" target="_blank">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+          <span class="erp-nav-text">Verify Certificate</span>
+        </a>
+      </div>
+      <div class="erp-nav-section">
+        <div class="erp-nav-label">Other</div>
+        <a href="admin-notifications.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span>
+          <span class="erp-nav-text">Notifications</span>
+        </a>
+        <a href="admin-placement.html" class="erp-nav-link">
+          <span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2-2v16"/></svg></span>
+          <span class="erp-nav-text">Placements</span>
+        </a>
+      </div>
+    </nav>
+    <div class="erp-sidebar-footer">
+      <div class="erp-sidebar-user">
+        <div class="erp-user-avatar">AP</div>
+        <div class="erp-user-info">
+          <strong id="user-name">Admin</strong>
+          <span id="user-role">Administrator</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="erp-main" id="erp-main">
+    <div class="erp-overlay-drop"></div>
+
+    <!-- TOPBAR -->
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <h1 class="erp-topbar-title">Admission Enquiry</h1>
+      <div class="erp-topbar-actions">
+        <button class="erp-topbar-btn" id="erp-theme-toggle" onclick="ERPTheme.toggle()"></button>
+        <button class="erp-topbar-btn" onclick="ERPAuth.logout()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="erp-content">
+
+      <!-- Enquiry Form Card -->
+      <div class="erp-card">
+        <div class="erp-card-header">
+          <span class="erp-card-title">📝 New Admission Enquiry</span>
+        </div>
+        <div class="erp-card-body">
+          <form id="enquiry-form" class="erp-form-grid">
+
+            <!-- Student Information -->
+            <div style="grid-column: 1/-1; margin-bottom: 12px">
+              <h3 style="font-size: 14px; font-weight: 700; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 8px">Student Information</h3>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Student Name *</label>
+              <input type="text" class="erp-form-input" id="student-name" required/>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Date of Birth *</label>
+              <input type="date" class="erp-form-input" id="dob" required/>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Gender *</label>
+              <select class="erp-form-input" id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Previous School/College</label>
+              <input type="text" class="erp-form-input" id="prev-school"/>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Class/Course Applying For *</label>
+              <select class="erp-form-input" id="course-applying" required>
+                <option value="">Select Course</option>
+                <option value="digital-marketing">Digital Marketing</option>
+                <option value="graphic-design">Graphic Design</option>
+                <option value="software-dev">Software Development</option>
+                <option value="cloud-management">Cloud Management</option>
+                <option value="ai-automation">AI & Automation</option>
+                <option value="banking-finance">Banking & Finance</option>
+                <option value="ui-ux">UI/UX Design</option>
+                <option value="web-development">Web Development</option>
+              </select>
+            </div>
+
+            <!-- Parent/Guardian Information -->
+            <div style="grid-column: 1/-1; margin: 24px 0 12px">
+              <h3 style="font-size: 14px; font-weight: 700; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 8px">Parent/Guardian Information</h3>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Parent/Guardian Name *</label>
+              <input type="text" class="erp-form-input" id="parent-name" required/>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Contact Number *</label>
+              <input type="tel" class="erp-form-input" id="contact" pattern="[0-9]{10}" placeholder="10-digit number" required/>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Email Address *</label>
+              <input type="email" class="erp-form-input" id="email" required/>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">WhatsApp Number</label>
+              <input type="tel" class="erp-form-input" id="whatsapp" pattern="[0-9]{10}" placeholder="10-digit number"/>
+            </div>
+
+            <!-- Address -->
+            <div class="erp-form-group" style="grid-column: 1/-1">
+              <label class="erp-form-label">Full Address *</label>
+              <textarea class="erp-form-input" id="address" rows="3" required></textarea>
+            </div>
+
+            <!-- Additional Information -->
+            <div style="grid-column: 1/-1; margin: 24px 0 12px">
+              <h3 style="font-size: 14px; font-weight: 700; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 8px">Additional Information</h3>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Source of Enquiry</label>
+              <select class="erp-form-input" id="source">
+                <option value="website">Website</option>
+                <option value="instagram">Instagram</option>
+                <option value="facebook">Facebook</option>
+                <option value="referral">Referral</option>
+                <option value="walk-in">Walk-in</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="erp-form-group">
+              <label class="erp-form-label">Preferred Mode</label>
+              <select class="erp-form-input" id="mode">
+                <option value="online">Online</option>
+                <option value="offline">Offline</option>
+                <option value="hybrid">Hybrid</option>
+              </select>
+            </div>
+
+            <div class="erp-form-group" style="grid-column: 1/-1">
+              <label class="erp-form-label">Notes/Remarks</label>
+              <textarea class="erp-form-input" id="notes" rows="2"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="grid-column: 1/-1; display: flex; gap: 12px; margin-top: 16px">
+              <button type="submit" class="erp-btn erp-btn-primary" style="flex: 1">
+                Submit Enquiry
+              </button>
+              <button type="reset" class="erp-btn erp-btn-ghost">
+                Clear Form
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Enquiries List -->
+      <div class="erp-card" style="margin-top: 24px">
+        <div class="erp-card-header">
+          <span class="erp-card-title">📋 Recent Enquiries</span>
+          <div style="display: flex; gap: 8px">
+            <input type="text" placeholder="Search enquiries..." id="search-enquiry" class="erp-form-input" style="width: 250px"/>
+            <button class="erp-btn erp-btn-primary erp-btn-sm" onclick="loadEnquiries()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="erp-card-body" style="padding: 0">
+          <div class="erp-table-responsive">
+            <table class="erp-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Student Name</th>
+                  <th>Course</th>
+                  <th>Contact</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="enquiry-list">
+                <tr>
+                  <td colspan="8" style="text-align: center; padding: 40px; color: var(--text-muted)">
+                    No enquiries found. Submit a new enquiry to get started.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="erp-toast-container"></div>
+
+<!-- Scripts -->
+<script src="erp-data.js"></script>
+<script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('admin');
+  ERPTheme.init();
+  ERPSidebar.init();
+
+  // Load enquiries from localStorage or Supabase
+  let enquiries = JSON.parse(localStorage.getItem('enquiries') || '[]');
+
+  // Form submission
+  document.getElementById('enquiry-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const enquiry = {
+      id: 'ENQ' + String(enquiries.length + 1).padStart(4, '0'),
+      studentName: document.getElementById('student-name').value,
+      dob: document.getElementById('dob').value,
+      gender: document.getElementById('gender').value,
+      prevSchool: document.getElementById('prev-school').value,
+      courseApplying: document.getElementById('course-applying').value,
+      parentName: document.getElementById('parent-name').value,
+      contact: document.getElementById('contact').value,
+      email: document.getElementById('email').value,
+      whatsapp: document.getElementById('whatsapp').value,
+      address: document.getElementById('address').value,
+      source: document.getElementById('source').value,
+      mode: document.getElementById('mode').value,
+      notes: document.getElementById('notes').value,
+      status: 'new',
+      date: new Date().toISOString().split('T')[0],
+      createdAt: new Date().toISOString()
+    };
+
+    // TODO: Replace with Supabase insert
+    // const { data, error } = await supabase.from('enquiries').insert([enquiry]);
+
+    enquiries.push(enquiry);
+    localStorage.setItem('enquiries', JSON.stringify(enquiries));
+
+    ERPToast.show('Success', 'Enquiry submitted successfully!', 'success');
+    e.target.reset();
+    loadEnquiries();
+  });
+
+  // Load and display enquiries
+  function loadEnquiries() {
+    const searchTerm = document.getElementById('search-enquiry').value.toLowerCase();
+    const filtered = enquiries.filter(e =>
+      e.studentName.toLowerCase().includes(searchTerm) ||
+      e.contact.includes(searchTerm) ||
+      e.email.toLowerCase().includes(searchTerm)
+    );
+
+    const tbody = document.getElementById('enquiry-list');
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 40px; color: var(--text-muted)">No enquiries found.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = filtered.slice().reverse().map(enq => {
+      const statusColors = {
+        new: 'var(--primary)',
+        contacted: 'var(--info)',
+        converted: 'var(--success)',
+        rejected: 'var(--danger)'
+      };
+
+      const courseName = document.querySelector(`#course-applying option[value="${enq.courseApplying}"]`)?.textContent || enq.courseApplying;
+
+      return `
+        <tr>
+          <td><strong>${enq.id}</strong></td>
+          <td>${enq.studentName}</td>
+          <td><span class="erp-badge" style="background: var(--primary-light); color: var(--primary)">${courseName}</span></td>
+          <td>${enq.contact}</td>
+          <td>${enq.email}</td>
+          <td><span class="erp-badge" style="background: ${statusColors[enq.status]}20; color: ${statusColors[enq.status]}">${enq.status.toUpperCase()}</span></td>
+          <td>${enq.date}</td>
+          <td>
+            <div style="display: flex; gap: 4px">
+              <button class="erp-btn erp-btn-sm erp-btn-ghost" onclick="viewEnquiry('${enq.id}')" title="View Details">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+              <button class="erp-btn erp-btn-sm erp-btn-success" onclick="convertToStudent('${enq.id}')" title="Convert to Student">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function viewEnquiry(id) {
+    const enq = enquiries.find(e => e.id === id);
+    if (!enq) return;
+
+    const courseName = document.querySelector(`#course-applying option[value="${enq.courseApplying}"]`)?.textContent || enq.courseApplying;
+
+    alert(`Enquiry Details:\n\nID: ${enq.id}\nStudent: ${enq.studentName}\nCourse: ${courseName}\nContact: ${enq.contact}\nEmail: ${enq.email}\nParent: ${enq.parentName}\nAddress: ${enq.address}\nNotes: ${enq.notes || 'N/A'}`);
+  }
+
+  function convertToStudent(id) {
+    const enq = enquiries.find(e => e.id === id);
+    if (!enq) return;
+
+    if (confirm(`Convert "${enq.studentName}" to a student?`)) {
+      enq.status = 'converted';
+      localStorage.setItem('enquiries', JSON.stringify(enquiries));
+      ERPToast.show('Success', 'Enquiry converted to student!', 'success');
+      loadEnquiries();
+    }
+  }
+
+  // Initial load
+  loadEnquiries();
+
+  // Search functionality
+  document.getElementById('search-enquiry').addEventListener('input', loadEnquiries);
+</script>
+</body>
+</html>

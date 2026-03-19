@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate Verification — White Banger</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <style>
+    body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .verify-container { max-width: 600px; width: 100%; background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 40px; }
+    .verify-header { text-align: center; margin-bottom: 32px; }
+    .verify-logo { width: 60px; height: 60px; background: linear-gradient(135deg, #1a56db, #10b981); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 24px; margin: 0 auto 16px; }
+    .verify-title { font-size: 24px; font-weight: 800; color: #111; margin: 0 0 8px; }
+    .verify-subtitle { font-size: 14px; color: #666; margin: 0; }
+    .verify-input-group { margin-bottom: 24px; }
+    .verify-label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 8px; }
+    .verify-input { width: 100%; padding: 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; transition: all 0.2s; }
+    .verify-input:focus { outline: none; border-color: #1a56db; box-shadow: 0 0 0 3px rgba(26,86,219,0.1); }
+    .verify-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #1a56db, #10b981); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+    .verify-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,86,219,0.3); }
+    .verify-result { margin-top: 24px; padding: 20px; border-radius: 8px; display: none; }
+    .verify-result.valid { background: #d1fae5; border: 2px solid #10b981; }
+    .verify-result.invalid { background: #fee2e2; border: 2px solid #ef4444; }
+    .result-icon { font-size: 48px; text-align: center; margin-bottom: 12px; }
+    .result-title { font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 16px; }
+    .result-details { font-size: 14px; line-height: 1.8; }
+    .result-details div { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .result-details div:last-child { border-bottom: none; }
+    .result-label { font-weight: 600; display: inline-block; min-width: 120px; }
+  </style>
+</head>
+<body>
+
+<div class="verify-container">
+  <div class="verify-header">
+    <div class="verify-logo">WB</div>
+    <h1 class="verify-title">Certificate Verification</h1>
+    <p class="verify-subtitle">Enter certificate ID to verify authenticity</p>
+  </div>
+
+  <form id="verify-form">
+    <div class="verify-input-group">
+      <label class="verify-label">Certificate ID</label>
+      <input type="text" class="verify-input" id="cert-id" placeholder="e.g., CERT2024-001" required/>
+    </div>
+
+    <button type="submit" class="verify-btn">Verify Certificate</button>
+  </form>
+
+  <div id="verify-result" class="verify-result">
+    <div class="result-icon" id="result-icon"></div>
+    <h2 class="result-title" id="result-title"></h2>
+    <div class="result-details" id="result-details"></div>
+  </div>
+
+  <div style="text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb">
+    <p style="font-size: 13px; color: #666; margin: 0">
+      © 2026 White Banger Tech Pvt Ltd<br/>
+      <a href="https://whitebanger.org" style="color: #1a56db; text-decoration: none">www.whitebanger.org</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  // Mock certificate data (replace with Supabase query)
+  const certificates = [
+    { id: 'CERT2024-001', studentName: 'Rajesh Kumar', course: 'Digital Marketing', issueDate: '2024-01-15', grade: 'A+', status: 'valid' },
+    { id: 'CERT2024-002', studentName: 'Priya Sharma', course: 'Software Development', issueDate: '2024-02-20', grade: 'A', status: 'valid' },
+    { id: 'CERT2024-003', studentName: 'Amit Singh', course: 'Graphic Design', issueDate: '2024-03-10', grade: 'B+', status: 'valid' }
+  ];
+
+  document.getElementById('verify-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const certId = document.getElementById('cert-id').value.trim().toUpperCase();
+    const resultDiv = document.getElementById('verify-result');
+    const resultIcon = document.getElementById('result-icon');
+    const resultTitle = document.getElementById('result-title');
+    const resultDetails = document.getElementById('result-details');
+
+    // TODO: Replace with Supabase query
+    // const { data, error } = await supabase
+    //   .from('certificates')
+    //   .select('*')
+    //   .eq('certificate_id', certId)
+    //   .single();
+
+    const cert = certificates.find(c => c.id === certId);
+
+    resultDiv.style.display = 'block';
+
+    if (cert && cert.status === 'valid') {
+      // Valid certificate
+      resultDiv.className = 'verify-result valid';
+      resultIcon.textContent = '✅';
+      resultTitle.textContent = 'Certificate is Valid';
+      resultTitle.style.color = '#10b981';
+      resultDetails.innerHTML = `
+        <div><span class="result-label">Certificate ID:</span> ${cert.id}</div>
+        <div><span class="result-label">Student Name:</span> ${cert.studentName}</div>
+        <div><span class="result-label">Course:</span> ${cert.course}</div>
+        <div><span class="result-label">Issue Date:</span> ${new Date(cert.issueDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+        <div><span class="result-label">Grade:</span> ${cert.grade}</div>
+        <div><span class="result-label">Status:</span> <strong style="color: #10b981">Active & Valid</strong></div>
+      `;
+    } else {
+      // Invalid certificate
+      resultDiv.className = 'verify-result invalid';
+      resultIcon.textContent = '❌';
+      resultTitle.textContent = 'Certificate Not Found';
+      resultTitle.style.color = '#ef4444';
+      resultDetails.innerHTML = `
+        <div style="text-align: center; padding: 16px 0">
+          <p style="margin: 0; color: #666">
+            The certificate ID "${certId}" could not be verified. Please check the ID and try again, or contact us for assistance.
+          </p>
+          <p style="margin: 16px 0 0; font-size: 13px; color: #999">
+            Contact: prikshit@whitebanger.org | +91 97283-20132
+          </p>
+        </div>
+      `;
+    }
+
+    // Scroll to result
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exam Results — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand">
+      <div class="erp-brand-logo">WB</div>
+      <div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div>
+    </div>
+    <nav class="erp-sidebar-nav">
+      <div class="erp-nav-section">
+        <div class="erp-nav-label">Main</div>
+        <a href="admin-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+        <a href="admin-students.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/></svg></span><span class="erp-nav-text">Students</span></a>
+      </div>
+      <div class="erp-nav-section">
+        <div class="erp-nav-label">Academics</div>
+        <a href="admin-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg></span><span class="erp-nav-text">Exams</span></a>
+        <a href="admin-exam-schedule.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg></span><span class="erp-nav-text">Exam Schedule</span></a>
+        <a href="admin-results.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg></span><span class="erp-nav-text">Results</span></a>
+      </div>
+    </nav>
+    <div class="erp-sidebar-footer">
+      <div class="erp-sidebar-user">
+        <div class="erp-user-avatar">AP</div>
+        <div class="erp-user-info"><strong>Admin</strong><span>Administrator</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="erp-main" id="erp-main">
+    <div class="erp-overlay-drop"></div>
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <h1 class="erp-topbar-title">Exam Results</h1>
+      <div class="erp-topbar-actions">
+        <button class="erp-topbar-btn" id="erp-theme-toggle" onclick="ERPTheme.toggle()"></button>
+        <button class="erp-topbar-btn" onclick="ERPAuth.logout()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </header>
+
+    <div class="erp-content">
+      <!-- Filter Card -->
+      <div class="erp-card" style="margin-bottom: 24px">
+        <div class="erp-card-header"><span class="erp-card-title">🔍 Search Results</span></div>
+        <div class="erp-card-body">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px">
+            <div class="erp-form-group">
+              <label class="erp-form-label">Exam</label>
+              <select id="filter-exam" class="erp-form-input" onchange="filterResults()">
+                <option value="">All Exams</option>
+              </select>
+            </div>
+            <div class="erp-form-group">
+              <label class="erp-form-label">Student</label>
+              <input type="text" id="filter-student" class="erp-form-input" placeholder="Search student..." oninput="filterResults()"/>
+            </div>
+            <div class="erp-form-group">
+              <label class="erp-form-label">Status</label>
+              <select id="filter-status" class="erp-form-input" onchange="filterResults()">
+                <option value="">All</option>
+                <option value="pass">Pass</option>
+                <option value="fail">Fail</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Table -->
+      <div class="erp-card">
+        <div class="erp-card-header">
+          <span class="erp-card-title">📊 Results</span>
+          <button class="erp-btn erp-btn-primary erp-btn-sm" onclick="showAddResultModal()">+ Add Result</button>
+        </div>
+        <div class="erp-card-body" style="padding: 0">
+          <div class="erp-table-responsive">
+            <table class="erp-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Exam</th>
+                  <th>Marks Obtained</th>
+                  <th>Total Marks</th>
+                  <th>Percentage</th>
+                  <th>Grade</th>
+                  <th>Status</th>
+                  <th>Rank</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="results-list"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Result Modal -->
+<div class="erp-modal-overlay" id="add-result-modal">
+  <div class="erp-modal-content" style="max-width: 600px">
+    <div class="erp-modal-header">
+      <h2 class="erp-modal-title">Add Exam Result</h2>
+      <button class="erp-modal-close" onclick="closeAddResultModal()">&times;</button>
+    </div>
+    <div class="erp-modal-body">
+      <form id="result-form">
+        <div class="erp-form-group">
+          <label class="erp-form-label">Student *</label>
+          <select id="result-student" class="erp-form-input" required></select>
+        </div>
+        <div class="erp-form-group">
+          <label class="erp-form-label">Exam *</label>
+          <select id="result-exam" class="erp-form-input" required></select>
+        </div>
+        <div class="erp-form-group">
+          <label class="erp-form-label">Marks Obtained *</label>
+          <input type="number" id="result-marks" class="erp-form-input" min="0" required/>
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 24px">
+          <button type="submit" class="erp-btn erp-btn-primary" style="flex: 1">Save Result</button>
+          <button type="button" class="erp-btn erp-btn-ghost" onclick="closeAddResultModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="erp-toast-container"></div>
+
+<script src="erp-data.js"></script>
+<script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('admin');
+  ERPTheme.init();
+  ERPSidebar.init();
+
+  // Mock results data (replace with Supabase)
+  let results = JSON.parse(localStorage.getItem('exam_results') || '[]');
+
+  function init() {
+    const examSelect = document.getElementById('filter-exam');
+    examSelect.innerHTML = '<option value="">All Exams</option>' +
+      ERP_DATA.exams.map(e => `<option value="${e.id}">${e.name}</option>`).join('');
+
+    const resultExamSelect = document.getElementById('result-exam');
+    resultExamSelect.innerHTML = '<option value="">Select Exam</option>' +
+      ERP_DATA.exams.map(e => `<option value="${e.id}" data-total="${e.totalMarks}">${e.name} (${e.totalMarks} marks)</option>`).join('');
+
+    const studentSelect = document.getElementById('result-student');
+    studentSelect.innerHTML = '<option value="">Select Student</option>' +
+      ERP_DATA.students.map(s => `<option value="${s.id}">${s.name} (${s.id})</option>`).join('');
+
+    filterResults();
+  }
+
+  function calculateGrade(percentage) {
+    if (percentage >= 90) return { grade: 'A+', color: '#10b981' };
+    if (percentage >= 80) return { grade: 'A', color: '#10b981' };
+    if (percentage >= 70) return { grade: 'B+', color: '#3b82f6' };
+    if (percentage >= 60) return { grade: 'B', color: '#3b82f6' };
+    if (percentage >= 50) return { grade: 'C', color: '#f59e0b' };
+    if (percentage >= 40) return { grade: 'D', color: '#f59e0b' };
+    return { grade: 'F', color: '#ef4444' };
+  }
+
+  function filterResults() {
+    const examFilter = document.getElementById('filter-exam').value;
+    const studentFilter = document.getElementById('filter-student').value.toLowerCase();
+    const statusFilter = document.getElementById('filter-status').value;
+
+    let filtered = results.filter(r => {
+      const student = ERP_DATA.students.find(s => s.id === r.studentId);
+      const matchExam = !examFilter || r.examId === examFilter;
+      const matchStudent = !studentFilter || student?.name.toLowerCase().includes(studentFilter);
+      const matchStatus = !statusFilter || r.status === statusFilter;
+      return matchExam && matchStudent && matchStatus;
+    });
+
+    const tbody = document.getElementById('results-list');
+    if (filtered.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 40px; color: var(--text-muted)">No results found</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = filtered.map(r => {
+      const student = ERP_DATA.students.find(s => s.id === r.studentId);
+      const exam = ERP_DATA.exams.find(e => e.id === r.examId);
+      const percentage = (r.marks / r.totalMarks * 100).toFixed(2);
+      const gradeInfo = calculateGrade(percentage);
+      const status = percentage >= 40 ? 'pass' : 'fail';
+
+      return `
+        <tr>
+          <td><strong>${student?.name || r.studentId}</strong></td>
+          <td>${exam?.name || r.examId}</td>
+          <td><strong>${r.marks}</strong></td>
+          <td>${r.totalMarks}</td>
+          <td><strong>${percentage}%</strong></td>
+          <td><span class="erp-badge" style="background: ${gradeInfo.color}20; color: ${gradeInfo.color}">${gradeInfo.grade}</span></td>
+          <td><span class="erp-badge" style="background: ${status === 'pass' ? 'var(--success)' : 'var(--danger)'}20; color: ${status === 'pass' ? 'var(--success)' : 'var(--danger)'}">$status.toUpperCase()}</span></td>
+          <td>${r.rank || '-'}</td>
+          <td>
+            <button class="erp-btn erp-btn-sm erp-btn-ghost" onclick="viewMarksheet('${r.id}')" title="View Marksheet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function showAddResultModal() {
+    document.getElementById('add-result-modal').classList.add('open');
+    document.getElementById('result-form').reset();
+  }
+
+  function closeAddResultModal() {
+    document.getElementById('add-result-modal').classList.remove('open');
+  }
+
+  document.getElementById('result-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const studentId = document.getElementById('result-student').value;
+    const examId = document.getElementById('result-exam').value;
+    const marks = parseFloat(document.getElementById('result-marks').value);
+
+    const exam = ERP_DATA.exams.find(e => e.id === examId);
+    const totalMarks = exam.totalMarks;
+
+    if (marks > totalMarks) {
+      ERPToast.show('Error', 'Marks cannot exceed total marks', 'error');
+      return;
+    }
+
+    const result = {
+      id: 'RES' + String(results.length + 1).padStart(4, '0'),
+      studentId,
+      examId,
+      marks,
+      totalMarks,
+      status: (marks / totalMarks * 100) >= 40 ? 'pass' : 'fail',
+      rank: null,
+      createdAt: new Date().toISOString()
+    };
+
+    results.push(result);
+    localStorage.setItem('exam_results', JSON.stringify(results));
+
+    ERPToast.show('Success', 'Result added successfully!', 'success');
+    closeAddResultModal();
+    filterResults();
+  });
+
+  function viewMarksheet(id) {
+    const result = results.find(r => r.id === id);
+    if (!result) return;
+
+    const student = ERP_DATA.students.find(s => s.id === result.studentId);
+    const exam = ERP_DATA.exams.find(e => e.id === result.examId);
+    const percentage = (result.marks / result.totalMarks * 100).toFixed(2);
+    const gradeInfo = calculateGrade(percentage);
+
+    alert(`MARKSHEET\n\nStudent: ${student.name}\nRoll No: ${student.id}\nExam: ${exam.name}\n\nMarks: ${result.marks}/${result.totalMarks}\nPercentage: ${percentage}%\nGrade: ${gradeInfo.grade}\nStatus: ${result.status.toUpperCase()}`);
+  }
+
+  init();
+</script>
+</body>
+</html>

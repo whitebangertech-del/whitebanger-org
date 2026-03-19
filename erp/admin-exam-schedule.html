@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exam Schedule — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav">
+      <div class="erp-nav-section"><div class="erp-nav-label">Main</div><a href="admin-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a></div>
+      <div class="erp-nav-section"><div class="erp-nav-label">Academics</div>
+        <a href="admin-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg></span><span class="erp-nav-text">Exams</span></a>
+        <a href="admin-exam-schedule.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg></span><span class="erp-nav-text">Exam Schedule</span></a>
+        <a href="admin-results.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg></span><span class="erp-nav-text">Results</span></a>
+      </div>
+    </nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">AP</div><div class="erp-user-info"><strong>Admin</strong><span>Administrator</span></div></div></div>
+  </aside>
+
+  <div class="erp-main" id="erp-main">
+    <div class="erp-overlay-drop"></div>
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <h1 class="erp-topbar-title">Examination Schedule</h1>
+      <div class="erp-topbar-actions">
+        <button class="erp-topbar-btn" id="erp-theme-toggle" onclick="ERPTheme.toggle()"></button>
+        <button class="erp-topbar-btn" onclick="ERPAuth.logout()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </header>
+
+    <div class="erp-content">
+      <div class="erp-card">
+        <div class="erp-card-header">
+          <span class="erp-card-title">📅 Examination Timetable</span>
+          <div style="display: flex; gap: 8px">
+            <select id="course-filter" class="erp-form-input" style="width: 200px" onchange="loadSchedule()">
+              <option value="">All Courses</option>
+            </select>
+            <button class="erp-btn erp-btn-ghost erp-btn-sm" onclick="window.print()">🖨 Print</button>
+          </div>
+        </div>
+        <div class="erp-card-body" style="padding: 0">
+          <div class="erp-table-responsive">
+            <table class="erp-table">
+              <thead>
+                <tr>
+                  <th>Exam Name</th>
+                  <th>Course</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Duration</th>
+                  <th>Venue</th>
+                  <th>Total Marks</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="schedule-list"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="erp-toast-container"></div>
+
+<script src="erp-data.js"></script>
+<script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('admin');
+  ERPTheme.init();
+  ERPSidebar.init();
+
+  function init() {
+    const courses = [...new Set(ERP_DATA.exams.map(e => e.course || 'General'))];
+    const courseFilter = document.getElementById('course-filter');
+    courseFilter.innerHTML = '<option value="">All Courses</option>' +
+      courses.map(c => `<option value="${c}">${c}</option>`).join('');
+
+    loadSchedule();
+  }
+
+  function loadSchedule() {
+    const courseFilter = document.getElementById('course-filter').value;
+    let exams = ERP_DATA.exams;
+
+    if (courseFilter) {
+      exams = exams.filter(e => (e.course || 'General') === courseFilter);
+    }
+
+    // Sort by date
+    exams.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    const tbody = document.getElementById('schedule-list');
+    tbody.innerHTML = exams.map(exam => {
+      const examDate = new Date(exam.date);
+      const now = new Date();
+      let status, statusColor;
+
+      if (examDate < now) {
+        status = 'Completed';
+        statusColor = 'var(--text-muted)';
+      } else if (examDate.toDateString() === now.toDateString()) {
+        status = 'Today';
+        statusColor = 'var(--warning)';
+      } else {
+        status = 'Upcoming';
+        statusColor = 'var(--primary)';
+      }
+
+      return `
+        <tr>
+          <td><strong>${exam.name}</strong></td>
+          <td>${exam.course || 'General'}</td>
+          <td>${new Date(exam.date).toLocaleDateString('en-IN', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</td>
+          <td>${exam.time || '10:00 AM'}</td>
+          <td>${exam.duration} min</td>
+          <td>${exam.venue || 'Main Hall'}</td>
+          <td>${exam.totalMarks}</td>
+          <td><span class="erp-badge" style="background: ${statusColor}20; color: ${statusColor}">${status}</span></td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  init();
+</script>
+</body>
+</html>

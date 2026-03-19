@@ -1,0 +1,557 @@
+/**
+ * Mobile Responsive Fixes
+ * Addresses all mobile responsiveness issues identified in the audit
+ */
+
+/* ============================================================================
+   1. IMPROVED BREAKPOINT STRATEGY
+   ============================================================================ */
+
+:root {
+  --mobile-xs: 320px;
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --desktop-lg: 1280px;
+}
+
+/* ============================================================================
+   2. TOUCH TARGET IMPROVEMENTS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  /* Navigation links - increase touch targets */
+  .wb-nav-link,
+  .erp-nav-link {
+    padding: 12px 16px !important;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Buttons - meet accessibility standards */
+  .erp-btn-sm {
+    padding: 10px 16px !important;
+    min-height: 44px;
+  }
+
+  .erp-btn-icon {
+    padding: 12px !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .wb-btn,
+  .erp-btn {
+    min-height: 48px;
+    padding: 12px 20px !important;
+  }
+}
+
+/* ============================================================================
+   3. NAVIGATION FIXES
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  /* Hide desktop nav, show hamburger */
+  .wb-nav {
+    display: none !important;
+  }
+
+  .wb-hamburger {
+    display: flex !important;
+    padding: 12px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Mobile nav menu */
+  .wb-nav.wb-nav-open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    z-index: 9999;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+
+  .wb-nav-link {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  .wb-nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ============================================================================
+   4. SIDEBAR FIXES - ERP
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .erp-sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 280px !important;
+    z-index: 10000;
+    transition: transform 0.3s ease;
+  }
+
+  .erp-sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.2);
+  }
+
+  .erp-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Overlay when sidebar is open */
+  body.sidebar-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+}
+
+/* ============================================================================
+   5. DROPDOWN AND FIXED WIDTH FIXES
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .wb-dropdown-menu {
+    min-width: 200px !important;
+    max-width: calc(100vw - 40px);
+  }
+
+  .wb-cat-item {
+    min-width: 80px !important;
+    flex: 0 0 auto;
+  }
+
+  .erp-search-input-wrap {
+    min-width: 100% !important;
+    flex: 1 1 100%;
+  }
+
+  .erp-filter-select {
+    min-width: 120px !important;
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .wb-dropdown-menu {
+    min-width: 160px !important;
+  }
+
+  .wb-cat-item {
+    min-width: 70px !important;
+  }
+
+  .erp-filter-select {
+    min-width: 100% !important;
+  }
+}
+
+/* ============================================================================
+   6. MODAL RESPONSIVE FIXES
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .erp-modal {
+    max-width: calc(100vw - 32px) !important;
+    margin: 16px;
+  }
+
+  .erp-modal-overlay {
+    padding: 16px !important;
+  }
+
+  .erp-modal-lg {
+    max-width: calc(100vw - 32px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .erp-modal,
+  .erp-modal-lg {
+    max-width: 100% !important;
+    margin: 8px;
+    max-height: calc(100vh - 16px);
+  }
+
+  .erp-modal-overlay {
+    padding: 8px !important;
+  }
+}
+
+/* ============================================================================
+   7. FORM GRID RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .erp-form-grid.cols-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .erp-form-grid,
+  .erp-form-grid.cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .erp-form-group label {
+    font-size: 13px !important;
+  }
+
+  .erp-form-input,
+  .erp-form-select,
+  .erp-form-textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 12px !important;
+  }
+}
+
+/* ============================================================================
+   8. TABLE RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .erp-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table.erp-table {
+    font-size: 14px !important;
+    min-width: 600px;
+  }
+
+  .erp-table th {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+
+  .erp-table td {
+    padding: 12px !important;
+  }
+
+  /* Sticky first column on mobile for better UX */
+  .erp-table td:first-child,
+  .erp-table th:first-child {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 1;
+  }
+
+  .erp-table th:first-child {
+    background: var(--gray-50, #f9fafb);
+  }
+}
+
+/* ============================================================================
+   9. KANBAN RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .erp-kanban {
+    flex-direction: column !important;
+    overflow-x: visible !important;
+  }
+
+  .erp-kanban-col {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ============================================================================
+   10. STATS GRID RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .erp-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .erp-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+}
+
+/* ============================================================================
+   11. TYPOGRAPHY RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  /* Ensure readable text sizes */
+  .erp-nav-label {
+    font-size: 11px !important;
+  }
+
+  .erp-nav-link {
+    font-size: 14px !important;
+  }
+
+  .erp-role-badge {
+    font-size: 12px !important;
+  }
+
+  .erp-stat-label {
+    font-size: 13px !important;
+  }
+
+  .erp-stat-value {
+    font-size: clamp(20px, 5vw, 28px) !important;
+  }
+
+  /* Hero and headings */
+  h1 {
+    font-size: clamp(24px, 7vw, 36px) !important;
+  }
+
+  h2 {
+    font-size: clamp(20px, 5vw, 28px) !important;
+  }
+
+  h3 {
+    font-size: clamp(18px, 4vw, 22px) !important;
+  }
+
+  p,
+  body {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* ============================================================================
+   12. IMAGE RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .hero-visual {
+    height: auto !important;
+    min-height: 300px !important;
+  }
+
+  .hero-composition {
+    position: relative;
+    aspect-ratio: 4 / 3;
+  }
+
+  .card-main,
+  .card-small {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 16px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ============================================================================
+   13. SEARCH BAR RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .erp-search-bar {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .erp-search-input-wrap {
+    width: 100%;
+  }
+
+  .erp-search-input {
+    font-size: 16px !important; /* Prevents iOS zoom */
+  }
+}
+
+/* ============================================================================
+   14. CARD LAYOUTS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .wb-cards-grid,
+  .erp-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .wb-card,
+  .erp-card {
+    padding: 16px !important;
+  }
+}
+
+/* ============================================================================
+   15. SPACING AND CONTAINERS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .wb-container,
+  .erp-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .wb-section,
+  .erp-section {
+    padding: 40px 0 !important;
+  }
+
+  /* Reduce excessive padding on mobile */
+  .wb-hero {
+    padding: 60px 0 40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wb-container,
+  .erp-container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .wb-section,
+  .erp-section {
+    padding: 32px 0 !important;
+  }
+}
+
+/* ============================================================================
+   16. VERY SMALL DEVICES (< 375px)
+   ============================================================================ */
+
+@media (max-width: 374px) {
+  html {
+    font-size: 14px;
+  }
+
+  .erp-btn,
+  .wb-btn {
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+  }
+
+  .erp-modal,
+  .erp-modal-lg {
+    margin: 4px !important;
+  }
+
+  .erp-table {
+    font-size: 12px !important;
+  }
+
+  .erp-table th {
+    font-size: 11px !important;
+  }
+}
+
+/* ============================================================================
+   17. SMOOTH SCROLLING FOR MOBILE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .erp-table-wrap,
+  .wb-categories-grid,
+  .erp-kanban {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Scroll indicators */
+  .erp-table-wrap::after,
+  .wb-categories-grid::after {
+    content: '→';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, transparent, white);
+    padding: 8px 12px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
+/* ============================================================================
+   18. ACCESSIBILITY - FOCUS STATES
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  *:focus-visible {
+    outline: 2px solid #3b82f6 !important;
+    outline-offset: 2px;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #3b82f6 !important;
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================================================
+   19. PREVENT HORIZONTAL SCROLL
+   ============================================================================ */
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================================
+   20. LANDSCAPE MODE OPTIMIZATIONS
+   ============================================================================ */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .erp-sidebar {
+    width: 240px !important;
+  }
+
+  .erp-modal {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .wb-hero {
+    padding: 40px 0 !important;
+  }
+}

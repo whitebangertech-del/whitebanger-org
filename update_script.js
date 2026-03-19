@@ -234,15 +234,15 @@ function formatReplacements(content, translations) {
 }
 
 // 1. Process internship.html
-let html1 = fs.readFileSync('c:/Users/priii/.gemini/antigravity/scratch/digital-marketing-agency/internship.html', 'utf8');
-fs.writeFileSync('c:/Users/priii/.gemini/antigravity/scratch/digital-marketing-agency/internship.html', formatReplacements(html1));
+let html1 = fs.readFileSync(__dirname + '/internship.html', 'utf8');
+fs.writeFileSync(__dirname + '/internship.html', formatReplacements(html1));
 
 // 2. Process internship-form.html
-let html2 = fs.readFileSync('c:/Users/priii/.gemini/antigravity/scratch/digital-marketing-agency/internship-form.html', 'utf8');
-fs.writeFileSync('c:/Users/priii/.gemini/antigravity/scratch/digital-marketing-agency/internship-form.html', formatReplacements(html2));
+let html2 = fs.readFileSync(__dirname + '/internship-form.html', 'utf8');
+fs.writeFileSync(__dirname + '/internship-form.html', formatReplacements(html2));
 
 // 3. Update wb-translations.js
-let transFile = fs.readFileSync('c:/Users/priii/.gemini/antigravity/scratch/digital-marketing-agency/wb-translations.js', 'utf8');
+let transFile = fs.readFileSync(__dirname + '/wb-translations.js', 'utf8');
 
 function injectTranslations(lang, fileContent, newTrans) {
   const marker = '"' + lang + '": {';
@@ -258,5 +258,5 @@ transFile = injectTranslations('en', transFile, enTranslations);
 transFile = injectTranslations('hi', transFile, hiTranslations);
 transFile = injectTranslations('pa', transFile, paTranslations);
 
-fs.writeFileSync('c:/Users/priii/.gemini/antigravity/scratch/digital-marketing-agency/wb-translations.js', transFile);
+fs.writeFileSync(__dirname + '/wb-translations.js', transFile);
 console.log('Script completed successfully.');

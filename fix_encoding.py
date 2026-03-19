@@ -49,6 +49,6 @@ def fix_files(directory):
                     print(f"Error processing {file_path}: {e}")
 
 if __name__ == "__main__":
-    # Target the project directory
-    project_dir = r"c:\Users\priii\.gemini\antigravity\scratch\digital-marketing-agency"
+    # Target the project directory (current directory)
+    project_dir = os.path.dirname(os.path.abspath(__file__))
     fix_files(project_dir)

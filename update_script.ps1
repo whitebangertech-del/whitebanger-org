@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
-$html1Path = "c:\Users\priii\.gemini\antigravity\scratch\digital-marketing-agency\internship.html"
-$html2Path = "c:\Users\priii\.gemini\antigravity\scratch\digital-marketing-agency\internship-form.html"
+$html1Path = "$PSScriptRoot\internship.html"
+$html2Path = "$PSScriptRoot\internship-form.html"
 
 function Replace-Text {
     param([string]$path, [string]$find, [string]$replace)

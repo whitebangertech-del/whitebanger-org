@@ -1,6 +1,7 @@
 import os, re
 
-erp_dir = r'c:\Users\priii\.gemini\antigravity\scratch\digital-marketing-agency\erp'
+# Use the directory where the script is located
+erp_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Explicit string replacements (ordered, case-sensitive)
 replacements = [

@@ -1,15 +1,21 @@
 {
   "name": "whitebanger-org",
   "version": "1.0.0",
-  "description": "WhiteBanger.Org Static Website",
+  "description": "WhiteBanger.Org - India's No.1 Skill Development Platform",
   "main": "index.html",
-  "author": "Antigravity",
+  "author": "White Banger Tech Pvt Ltd",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "node minify.js",
-    "start": "npx serve ."
+    "dev": "npx serve . -p 3000",
+    "build": "node minify.cjs",
+    "start": "npm run dev",
+    "preview": "npx serve . -p 8080"
   },
   "devDependencies": {
     "serve": "^14.2.4"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
   }
 }

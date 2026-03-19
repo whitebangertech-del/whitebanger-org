@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Exams — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="teacher-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="teacher-attendance.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="erp-nav-text">Mark Attendance</span></a>
+
+      <a href="teacher-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Materials</span></a>
+      <a href="teacher-students.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span><span class="erp-nav-text">My Students</span></a>
+      <a href="teacher-crm.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span class="erp-nav-text">CRM</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">RK</div><div class="erp-user-info"><strong>Ravi Kumar</strong><span>Teacher</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Manage Exams</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge teacher">Teacher</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">RK</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">Manage Exams</h1><p class="erp-page-subtitle">View and manage exams for your courses</p></div>
+      </div>
+
+      <!-- Exam Cards -->
+      <div id="exams-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-bottom:24px"></div>
+
+      <!-- Results Table -->
+      <div class="erp-card">
+        <div class="erp-card-header"><span class="erp-card-title">Student Results</span>
+          <select class="erp-filter-select" id="filter-exam" onchange="loadResults()" style="width:auto">
+            <option value="">All Exams</option>
+          </select>
+        </div>
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead><tr><th>Student</th><th>Exam</th><th>Marks</th><th>Grade</th><th>Rank</th><th>Submitted</th><th>Status</th></tr></thead>
+            <tbody id="results-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('teacher');
+  const user = ERPAuth.current();
+  const teacher = ERP_DATA.teachers.find(t=>t.email===user?.email) || ERP_DATA.teachers[0];
+  document.querySelectorAll('.erp-user-avatar').forEach(el=>el.textContent=teacher.photo);
+  document.querySelectorAll('.erp-user-info strong').forEach(el=>el.textContent=teacher.name);
+
+  const myCourses = teacher.courses;
+  const myExams = ERP_DATA.exams.filter(e=>myCourses.includes(e.course));
+
+  // Populate exam filter
+  const examFilter = document.getElementById('filter-exam');
+  myExams.forEach(e=>{const o=document.createElement('option');o.value=e.id;o.textContent=e.title;examFilter.appendChild(o);});
+
+  // Render exam cards
+  const grid = document.getElementById('exams-grid');
+  myExams.forEach(exam=>{
+    const results = ERP_DATA.results.filter(r=>r.examId===exam.id);
+    const avgMark = results.length ? Math.round(results.reduce((s,r)=>s+r.marks,0)/results.length) : 0;
+    const passCount = results.filter(r=>r.marks>=exam.passMark).length;
+    const card = document.createElement('div');
+    card.className = 'erp-card';
+    card.innerHTML = `
+      <div class="erp-card-header">
+        <span class="erp-card-title">${exam.title}</span>
+        <span class="erp-badge erp-badge-info">${exam.type}</span>
+      </div>
+      <div class="erp-card-body" style="padding:16px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div style="font-size:12px;color:var(--text-muted)">Course<br><strong style="color:var(--text-primary);font-size:13px">${exam.course}</strong></div>
+          <div style="font-size:12px;color:var(--text-muted)">Date<br><strong style="color:var(--text-primary);font-size:13px">${ERPTable.fmtDate(exam.date)}</strong></div>
+          <div style="font-size:12px;color:var(--text-muted)">Duration<br><strong style="color:var(--text-primary);font-size:13px">${exam.duration} min</strong></div>
+          <div style="font-size:12px;color:var(--text-muted)">Total Marks<br><strong style="color:var(--text-primary);font-size:13px">${exam.totalMarks}</strong></div>
+        </div>
+        <div style="display:flex;gap:16px;padding-top:12px;border-top:1px solid var(--border)">
+          <div style="text-align:center;flex:1">
+            <div style="font-size:22px;font-weight:800;color:var(--primary)">${results.length}</div>
+            <div style="font-size:11px;color:var(--text-muted)">Attempted</div>
+          </div>
+          <div style="text-align:center;flex:1">
+            <div style="font-size:22px;font-weight:800;color:var(--success)">${passCount}</div>
+            <div style="font-size:11px;color:var(--text-muted)">Passed</div>
+          </div>
+          <div style="text-align:center;flex:1">
+            <div style="font-size:22px;font-weight:800;color:var(--gold)">${avgMark}%</div>
+            <div style="font-size:11px;color:var(--text-muted)">Avg Score</div>
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  function loadResults() {
+    const filterExamId = document.getElementById('filter-exam').value;
+    const myStudentIds = ERP_DATA.students.filter(s=>myCourses.includes(s.course)).map(s=>s.id);
+    let results = ERP_DATA.results.filter(r=>myStudentIds.includes(r.studentId));
+    if (filterExamId) results = results.filter(r=>r.examId===filterExamId);
+
+    const rows = results.map(r=>{
+      const student = ERP_DATA.students.find(s=>s.id===r.studentId)||{name:'Unknown',photo:'?'};
+      const exam = ERP_DATA.exams.find(e=>e.id===r.examId)||{title:'Unknown',passMark:40,totalMarks:100};
+      const passed = r.marks >= exam.passMark;
+      const pct = Math.round((r.marks/exam.totalMarks)*100);
+      return `<tr>
+        <td><div style="display:flex;align-items:center;gap:8px">
+          <div class="erp-avatar erp-avatar-sm" style="background:${ERPTable.avatarBg(student.photo)}">${student.photo}</div>
+          <span style="font-weight:600;font-size:13px">${student.name}</span>
+        </div></td>
+        <td style="font-size:12px">${exam.title}</td>
+        <td><strong>${r.marks}</strong> <span style="font-size:11px;color:var(--text-muted)">/ ${exam.totalMarks}</span>
+          <div class="erp-progress" style="margin-top:4px;max-width:80px"><div class="erp-progress-bar ${pct>=75?'green':pct>=40?'gold':'red'}" style="width:${pct}%"></div></div>
+        </td>
+        <td><span class="erp-badge erp-badge-${r.grade==='A+'||r.grade==='A'?'success':r.grade==='B'?'info':'warning'}">${r.grade}</span></td>
+        <td style="font-weight:700">Rank ${r.rank}</td>
+        <td style="font-size:12px;color:var(--text-muted)">${ERPTable.fmtDate(r.submitted)}</td>
+        <td><span class="erp-badge erp-badge-${passed?'success':'danger'}">${passed?'Pass':'Fail'}</span></td>
+      </tr>`;
+    });
+    ERPTable.renderRows('results-tbody', rows.length ? rows : ['<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:32px">No results found</td></tr>']);
+  }
+
+  loadResults();
+</script>
+</body>
+</html>

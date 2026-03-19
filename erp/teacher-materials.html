@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Materials — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="teacher-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="teacher-attendance.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="erp-nav-text">Mark Attendance</span></a>
+
+      <a href="teacher-materials.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Materials</span></a>
+      <a href="teacher-students.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span><span class="erp-nav-text">My Students</span></a>
+      <a href="teacher-crm.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span class="erp-nav-text">CRM</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">RK</div><div class="erp-user-info"><strong>Ravi Kumar</strong><span>Teacher</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Study Materials</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge teacher">Teacher</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">RK</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">Study Materials</h1><p class="erp-page-subtitle">Manage study materials for your courses</p></div>
+        <button class="erp-btn erp-btn-primary" onclick="ERPModal.open('modal-upload')">+ Upload Material</button>
+      </div>
+      <div class="erp-stats-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px">
+        <div class="erp-stat-card"><div class="erp-stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div><div class="erp-stat-info"><div class="erp-stat-value" id="stat-total">0</div><div class="erp-stat-label">Total Materials</div></div></div>
+        <div class="erp-stat-card"><div class="erp-stat-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="erp-stat-info"><div class="erp-stat-value" id="stat-pdfs">0</div><div class="erp-stat-label">PDF Files</div></div></div>
+        <div class="erp-stat-card"><div class="erp-stat-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div class="erp-stat-info"><div class="erp-stat-value" id="stat-videos">0</div><div class="erp-stat-label">Video Links</div></div></div>
+      </div>
+      <div class="erp-search-bar" style="margin-bottom:16px">
+        <div class="erp-search-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="erp-input" id="search-input" placeholder="Search materials..." oninput="filterMaterials()"/>
+        </div>
+        <select class="erp-filter-select" id="filter-course" onchange="filterMaterials()"><option value="">All My Courses</option></select>
+        <select class="erp-filter-select" id="filter-type" onchange="filterMaterials()">
+          <option value="">All Types</option><option value="pdf">PDF</option><option value="video">Video</option>
+        </select>
+      </div>
+      <div class="erp-card">
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead><tr><th>Title</th><th>Course</th><th>Type</th><th>Size</th><th>Uploaded</th><th>Actions</th></tr></thead>
+            <tbody id="materials-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="erp-modal-overlay" id="modal-upload">
+  <div class="erp-modal">
+    <div class="erp-modal-header"><span class="erp-modal-title">Upload New Material</span><button class="erp-modal-close" data-modal-close>✕</button></div>
+    <div class="erp-modal-body">
+      <div class="erp-form-grid">
+        <div class="erp-form-group"><label class="erp-label">Title *</label><input type="text" class="erp-input" id="f-title" placeholder="e.g. Module 3 PDF"/></div>
+        <div class="erp-form-group"><label class="erp-label">Course</label><select class="erp-select" id="f-course"></select></div>
+        <div class="erp-form-group"><label class="erp-label">Type</label><select class="erp-select" id="f-type"><option value="pdf">PDF</option><option value="video">Video</option></select></div>
+        <div class="erp-form-group"><label class="erp-label">URL / Link</label><input type="url" class="erp-input" id="f-url" placeholder="https://..."/></div>
+      </div>
+    </div>
+    <div class="erp-modal-footer">
+      <button class="erp-btn erp-btn-ghost" data-modal-close>Cancel</button>
+      <button class="erp-btn erp-btn-primary" onclick="uploadMaterial()">Upload</button>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('teacher');
+  const user = ERPAuth.current();
+  const teacher = ERP_DATA.teachers.find(t=>t.email===user?.email) || ERP_DATA.teachers[0];
+  document.querySelectorAll('.erp-user-avatar').forEach(el=>el.textContent=teacher.photo);
+  document.querySelectorAll('.erp-user-info strong').forEach(el=>el.textContent=teacher.name);
+  const myCourses = teacher.courses;
+  let myMaterials = ERP_DATA.materials.filter(m=>myCourses.includes(m.course));
+  const cf = document.getElementById('filter-course');
+  const cs = document.getElementById('f-course');
+  myCourses.forEach(c=>{[cf,cs].forEach(sel=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});});
+  function updateStats(d){document.getElementById('stat-total').textContent=d.length;document.getElementById('stat-pdfs').textContent=d.filter(m=>m.type==='pdf').length;document.getElementById('stat-videos').textContent=d.filter(m=>m.type==='video').length;}
+  function renderTable(data){
+    const rows=data.map(m=>`<tr>
+      <td><strong style="font-size:13px">${m.title}</strong></td>
+      <td><span class="erp-badge erp-badge-info" style="font-size:11px">${m.course}</span></td>
+      <td><span class="erp-badge erp-badge-${m.type==='pdf'?'danger':'warning'}" style="font-size:11px;text-transform:uppercase">${m.type}</span></td>
+      <td style="font-size:12px;color:var(--text-muted)">${m.size}</td>
+      <td style="font-size:12px;color:var(--text-muted)">${ERPTable.fmtDate(m.date)}</td>
+      <td><div style="display:flex;gap:6px">
+        <a href="${m.url}" target="_blank" class="erp-btn erp-btn-ghost erp-btn-sm">View</a>
+        <button class="erp-btn erp-btn-danger erp-btn-sm" onclick="ERPToast.show('Deleted','Material removed','success')">Delete</button>
+      </div></td>
+    </tr>`);
+    ERPTable.renderRows('materials-tbody',rows.length?rows:['<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:32px">No materials found</td></tr>']);
+    updateStats(data);
+  }
+  function filterMaterials(){
+    const q=document.getElementById('search-input').value.toLowerCase();
+    const course=document.getElementById('filter-course').value;
+    const type=document.getElementById('filter-type').value;
+    renderTable(myMaterials.filter(m=>m.title.toLowerCase().includes(q)&&(!course||m.course===course)&&(!type||m.type===type)));
+  }
+  function uploadMaterial(){
+    const title=document.getElementById('f-title').value.trim();
+    if(!title){ERPToast.show('Error','Title is required','error');return;}
+    myMaterials.unshift({id:'MAT'+Date.now(),course:document.getElementById('f-course').value||myCourses[0],title,type:document.getElementById('f-type').value,uploadedBy:teacher.name,date:new Date().toISOString().split('T')[0],size:'Link',url:document.getElementById('f-url').value||'#'});
+    ERPModal.close('modal-upload');
+    ERPToast.show('Uploaded',`"${title}" added`,'success');
+    renderTable(myMaterials);
+  }
+  renderTable(myMaterials);
+</script>
+</body>
+</html>

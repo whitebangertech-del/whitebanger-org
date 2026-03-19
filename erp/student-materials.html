@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Materials — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="student-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="student-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></span><span class="erp-nav-text">My Exams</span></a>
+      <a href="student-materials.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Study Materials</span></a>
+      <a href="student-fees.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span><span class="erp-nav-text">My Fees</span></a>
+      <a href="student-certificate.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificate</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">SV</div><div class="erp-user-info"><strong>Sneha Verma</strong><span>Student</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Study Materials</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge student">Student</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">SV</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">My Study Materials</h1><p class="erp-page-subtitle">Access all course materials, PDFs, videos and assignments</p></div>
+      </div>
+      <!-- Filter -->
+      <div class="erp-search-bar">
+        <div class="erp-search-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="erp-input" id="m-search" placeholder="Search materials..." oninput="filter()"/>
+        </div>
+        <select class="erp-filter-select" id="m-type" onchange="filter()">
+          <option value="">All Types</option>
+          <option value="pdf">📄 PDF / Notes</option>
+          <option value="video">🎬 Video</option>
+          <option value="assignment">📝 Assignment</option>
+        </select>
+      </div>
+      <div class="erp-materials-grid" id="mat-grid"></div>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('student');
+  const user = ERPAuth.current();
+  const student = ERP_DATA.students.find(s=>s.email===user?.email)||ERP_DATA.students[0];
+  let mats = ERP_DATA.materials.filter(m=>m.course===student.course||m.course==='General');
+  const typeIcons = { pdf:'📄', video:'🎬', assignment:'📝' };
+  const typeColors = { pdf:'erp-badge-danger', video:'erp-badge-primary', assignment:'erp-badge-warning' };
+
+  function renderGrid(data) {
+    document.getElementById('mat-grid').innerHTML = data.length ? data.map(m=>`
+      <div class="erp-material-card">
+        <div class="erp-material-icon" style="font-size:20px;color:var(--primary);margin-bottom:12px">${m.type.toUpperCase()}</div>
+        <div class="erp-material-title">${m.title}</div>
+        <div style="margin-bottom:8px"><span class="erp-badge ${typeColors[m.type]||'erp-badge-gray'}" style="font-size:10px">${m.type.toUpperCase()}</span></div>
+        <div class="erp-material-meta">${m.course}</div>
+        <div class="erp-material-meta">${ERPTable.fmtDate(m.date)} · ${m.size}</div>
+        <div class="erp-material-meta" style="margin-bottom:16px">By ${m.uploadedBy}</div>
+        <a href="${m.url||'#'}" class="erp-btn erp-btn-primary erp-btn-sm erp-w-full" style="justify-content:center" onclick="event.preventDefault();ERPToast.show('Download','Opening ${m.title}...','info')">Download</a>
+      </div>`).join('') : '<div style="text-align:center;color:var(--text-muted);padding:48px;grid-column:1/-1">No materials found</div>';
+  }
+  function filter() {
+    const q = document.getElementById('m-search').value.toLowerCase();
+    const type = document.getElementById('m-type').value;
+    renderGrid(mats.filter(m=>m.title.toLowerCase().includes(q)&&(!type||m.type===type)));
+  }
+  renderGrid(mats);
+</script>
+</body>
+</html>

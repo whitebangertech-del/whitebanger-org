@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notifications — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="admin-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="admin-students.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="erp-nav-text">Students</span></a>
+      <a href="admin-teachers.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="erp-nav-text">Teachers</span></a>
+      <a href="admin-courses.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span><span class="erp-nav-text">Courses</span></a>
+      <a href="admin-attendance.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="erp-nav-text">Attendance</span></a>
+      <a href="admin-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span><span class="erp-nav-text">Exams</span></a>
+      <a href="admin-fees.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><span class="erp-nav-text">Fees</span></a>
+      <a href="admin-crm.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span class="erp-nav-text">CRM</span></a>
+      <a href="admin-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Materials</span></a>
+      <a href="admin-certificates.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificates</span></a>
+      <a href="admin-placement.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span class="erp-nav-text">Placements</span></a>
+      <a href="admin-notifications.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span><span class="erp-nav-text">Notifications</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">AP</div><div class="erp-user-info"><strong>Admin Priya</strong><span>Administrator</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Notifications</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge admin">Admin</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">AP</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">Notification Center</h1><p class="erp-page-subtitle">Send WhatsApp, email and bulk notifications to students and leads</p></div>
+      </div>
+
+      <!-- SMTP Status Banner -->
+      <div id="smtp-banner" style="background:rgba(16,185,129,0.08);border:1px solid var(--success);border-radius:10px;padding:12px 18px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-size:13px">
+        <span style="font-size:16px;color:var(--success)">&#9679;</span>
+        <div>
+          <strong>Google Workspace Email</strong> — SMTP server configured at <code style="font-size:11px">localhost:3001</code>.
+          Start it with <code style="font-size:11px">node email-server.js</code> to enable real email delivery.
+        </div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" style="margin-left:auto;flex-shrink:0" onclick="testSMTP()">Test Connection</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:24px">
+        <!-- Compose Panel -->
+        <div>
+          <div class="erp-card">
+            <div class="erp-card-header"><span class="erp-card-title">Send Notification</span></div>
+            <div class="erp-card-body">
+              <!-- Type -->
+              <div style="margin-bottom:16px">
+                <div class="erp-label erp-mb-8">Notification Type</div>
+                <div class="erp-notif-type-grid">
+                  <div class="erp-notif-type-card selected" onclick="selectType(this,'fee_reminder')"><div class="erp-notif-type-icon" style="font-size:20px;color:var(--primary)">Fee</div><div class="erp-notif-type-name">Fee Reminder</div></div>
+                  <div class="erp-notif-type-card" onclick="selectType(this,'exam_schedule')"><div class="erp-notif-type-icon" style="font-size:20px;color:var(--primary)">Exam</div><div class="erp-notif-type-name">Exam Schedule</div></div>
+                  <div class="erp-notif-type-card" onclick="selectType(this,'attendance_alert')"><div class="erp-notif-type-icon" style="font-size:20px;color:var(--warning)">Att.</div><div class="erp-notif-type-name">Attendance Alert</div></div>
+                  <div class="erp-notif-type-card" onclick="selectType(this,'admission_followup')"><div class="erp-notif-type-icon" style="font-size:20px;color:var(--success)">CRM</div><div class="erp-notif-type-name">Admission Follow-up</div></div>
+                </div>
+              </div>
+
+              <!-- Channel -->
+              <div class="erp-form-group erp-mb-16">
+                <label class="erp-label">Channel</label>
+                <select class="erp-select" id="n-channel">
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="email">Email (Google Workspace SMTP)</option>
+                  <option value="both">Both WhatsApp + Email</option>
+                </select>
+              </div>
+
+              <!-- Recipients -->
+              <div class="erp-form-group erp-mb-16">
+                <label class="erp-label">Recipients</label>
+                <select class="erp-select" id="n-recipients">
+                  <option value="all_students">All Students</option>
+                  <option value="fee_pending">Fee Pending Students</option>
+                  <option value="low_attendance">Low Attendance Students</option>
+                  <option value="all_leads">All CRM Leads</option>
+                </select>
+              </div>
+
+              <!-- Email Subject (shown only for email) -->
+              <div class="erp-form-group erp-mb-16" id="subject-field" style="display:none">
+                <label class="erp-label">Email Subject</label>
+                <input type="text" class="erp-input" id="n-subject" placeholder="e.g. Fee Payment Reminder"/>
+              </div>
+
+              <!-- Message -->
+              <div class="erp-form-group erp-mb-16">
+                <label class="erp-label">Message</label>
+                <textarea class="erp-textarea" id="n-message" placeholder="Type your notification message..." style="min-height:120px"></textarea>
+              </div>
+
+              <!-- Action Buttons -->
+              <div style="display:flex;gap:8px">
+                <button class="erp-btn erp-btn-ghost erp-btn-sm" style="flex:1" onclick="previewMsg()">Preview</button>
+                <button class="erp-btn erp-btn-primary" style="flex:1" id="send-btn" onclick="sendNotification()">
+                  Send Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Quick Send (individual) -->
+          <div class="erp-card" style="margin-top:16px">
+            <div class="erp-card-header"><span class="erp-card-title">Send to Individual</span></div>
+            <div class="erp-card-body">
+              <div class="erp-form-group erp-mb-16">
+                <label class="erp-label">Recipient Email</label>
+                <input type="email" class="erp-input" id="ind-email" placeholder="student@example.com"/>
+              </div>
+              <div class="erp-form-group erp-mb-16">
+                <label class="erp-label">Subject</label>
+                <input type="text" class="erp-input" id="ind-subject" placeholder="Email subject"/>
+              </div>
+              <div class="erp-form-group erp-mb-16">
+                <label class="erp-label">Message</label>
+                <textarea class="erp-textarea" id="ind-message" style="min-height:80px" placeholder="Your message here..."></textarea>
+              </div>
+              <button class="erp-btn erp-btn-outline erp-w-full" onclick="sendIndividual()">Send Email</button>
+            </div>
+          </div>
+
+          <!-- Auto-Triggers -->
+          <div class="erp-card" style="margin-top:16px">
+            <div class="erp-card-header"><span class="erp-card-title">Quick Auto-Triggers</span></div>
+            <div class="erp-card-body" style="display:flex;flex-direction:column;gap:8px">
+              <button class="erp-btn erp-btn-outline" onclick="autoEmailFee()">Email All Fee-Pending Students</button>
+              <button class="erp-btn erp-btn-outline" onclick="autoEmailAttendance()">Email Low Attendance Students</button>
+              <button class="erp-btn erp-btn-outline" onclick="autoEmailLeads()">Follow-up Email to All CRM Leads</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Panel -->
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">Notification History</span></div>
+          <div id="notif-history" style="padding:4px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script>
+<script src="erp-script.js"></script>
+<script src="email-config.js"></script>
+<script>
+  ERPAuth.guard('admin');
+  let selectedType = 'fee_reminder';
+  let notifications = [...ERP_DATA.notifications];
+
+  const typeIcons = { fee_reminder:'💰', exam_schedule:'📝', attendance_alert:'⚠️', admission_followup:'📊', custom:'💬' };
+  const defaultMessages = {
+    fee_reminder:    'Dear Student, your fee payment is due. Please clear your dues at the earliest to avoid any inconvenience. Contact us at +91 97283 20132.',
+    exam_schedule:   'Important: Your upcoming exam is scheduled. Please check your timetable and prepare accordingly. Best of luck!',
+    attendance_alert:'Dear Student, your attendance is below 75%. Regular attendance is required for certification. Please attend classes regularly.',
+    admission_followup: 'Hi! We noticed you enquired about White Banger courses. We have exciting batches starting soon. Reply to know more!'
+  };
+  const defaultSubjects = {
+    fee_reminder:    'Fee Payment Reminder — White Banger',
+    exam_schedule:   'Upcoming Exam Notice — White Banger',
+    attendance_alert:'Attendance Alert — White Banger',
+    admission_followup: 'Following up on your course enquiry'
+  };
+
+  // Channel toggle — show/hide subject field
+  document.getElementById('n-channel').addEventListener('change', function() {
+    document.getElementById('subject-field').style.display = this.value !== 'whatsapp' ? 'flex' : 'none';
+  });
+
+  function selectType(card, type) {
+    document.querySelectorAll('.erp-notif-type-card').forEach(c=>c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedType = type;
+    document.getElementById('n-message').value = defaultMessages[type] || '';
+    document.getElementById('n-subject').value = defaultSubjects[type] || '';
+  }
+  document.getElementById('n-message').value = defaultMessages['fee_reminder'];
+  document.getElementById('n-subject').value = defaultSubjects['fee_reminder'];
+
+  function renderHistory() {
+    document.getElementById('notif-history').innerHTML = notifications.map(n=>`
+      <div style="border-bottom:1px solid var(--border);padding:14px 16px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:10px;height:10px;border-radius:50%;background:var(--primary);flex-shrink:0"></div>
+            <div style="font-weight:700;font-size:13px">${n.title}</div>
+          </div>
+          <span class="erp-badge ${n.channel==='Email'||n.channel==='Both'?'erp-badge-primary':'erp-badge-success'}">${n.channel}</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px">${n.message}</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted)">
+          <span>${n.recipients} recipients</span>
+          <span>${ERPTable.fmtDate(n.sent)}</span>
+        </div>
+      </div>`).join('');
+  }
+
+  function previewMsg() {
+    const msg = document.getElementById('n-message').value;
+    ERPToast.show('Message Preview', msg.slice(0,150)+'...', 'info', 5000);
+  }
+
+  async function sendNotification() {
+    const msg  = document.getElementById('n-message').value.trim();
+    if(!msg) { ERPToast.show('Error','Please enter a message.','error'); return; }
+    const recip = document.getElementById('n-recipients');
+    const channel = document.getElementById('n-channel').value;
+    const channelLabel = { whatsapp:'WhatsApp', email:'Email', both:'Both' }[channel];
+    const recipCount = { all_students:ERP_DATA.students.length, fee_pending:ERP_DATA.students.filter(s=>s.paid<s.fee).length, low_attendance:ERP_DATA.students.filter(s=>s.attendance<75).length, all_leads:ERP_DATA.leads.length };
+    const count = recipCount[recip.value] || 5;
+
+    // Fire email if channel is email or both
+    if (channel === 'email' || channel === 'both') {
+      const subject = document.getElementById('n-subject').value || defaultSubjects[selectedType];
+      // For demo: send to all matching student emails
+      const targets = getRecipients(recip.value);
+      await ERPEmail.sendBulk(targets, subject, r => msg.replace('Student', r.name||'Student'));
+    } else {
+      ERPToast.show('WhatsApp Queued',`${count} messages queued for WhatsApp delivery.`,'success');
+    }
+
+    notifications.unshift({ id:'NOT0'+(notifications.length+10), type:selectedType, title:recip.options[recip.selectedIndex].text, message:msg, sent:new Date().toISOString().split('T')[0], channel:channelLabel, recipients:count });
+    renderHistory();
+  }
+
+  function getRecipients(val) {
+    const s = ERP_DATA.students;
+    if(val==='all_students') return s.map(x=>({name:x.name,email:x.email}));
+    if(val==='fee_pending') return s.filter(x=>x.paid<x.fee).map(x=>({name:x.name,email:x.email}));
+    if(val==='low_attendance') return s.filter(x=>x.attendance<75).map(x=>({name:x.name,email:x.email}));
+    if(val==='all_leads') return ERP_DATA.leads.map(x=>({name:x.name,email:x.email}));
+    return [];
+  }
+
+  async function sendIndividual() {
+    const to = document.getElementById('ind-email').value.trim();
+    const subject = document.getElementById('ind-subject').value.trim();
+    const body = document.getElementById('ind-message').value.trim();
+    if(!to||!subject||!body) { ERPToast.show('Error','All fields required.','error'); return; }
+    await ERPEmail.send(to, subject, body);
+  }
+
+  async function autoEmailFee() {
+    const pending = ERP_DATA.students.filter(s=>s.paid<s.fee);
+    for(const s of pending) {
+      const t = ERPEmail.templates.feeReminder(s);
+      await ERPEmail.send(s.email, t.subject, t.body);
+    }
+  }
+  async function autoEmailAttendance() {
+    const low = ERP_DATA.students.filter(s=>s.attendance<75);
+    const t = ERPEmail.templates.feeReminder; // reuse structure
+    for(const s of low) {
+      await ERPEmail.send(s.email, 'Attendance Alert — White Banger', `Dear ${s.name}, your attendance is ${s.attendance}%. Please attend classes regularly. Contact us if you need support.`);
+    }
+  }
+  async function autoEmailLeads() {
+    for(const lead of ERP_DATA.leads) {
+      const t = ERPEmail.templates.admissionFollowup(lead);
+      await ERPEmail.send(lead.email, t.subject, t.body);
+    }
+  }
+  function testSMTP() {
+    ERPEmail.send('admin@whitebanger.com','SMTP Test — White Banger Dashboard','This is a test email from the White Banger Management System. If you receive this, SMTP is configured correctly.')
+      .then(r => {
+        if(r.success) ERPToast.show('SMTP OK','Connection to Google Workspace is working!','success',5000);
+      });
+  }
+
+  renderHistory();
+</script>
+</body>
+</html>

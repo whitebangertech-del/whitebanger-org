@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificates — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="admin-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="admin-students.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="erp-nav-text">Students</span></a>
+      <a href="admin-teachers.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="erp-nav-text">Teachers</span></a>
+      <a href="admin-courses.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span><span class="erp-nav-text">Courses</span></a>
+      <a href="admin-attendance.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="erp-nav-text">Attendance</span></a>
+      <a href="admin-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span><span class="erp-nav-text">Exams</span></a>
+      <a href="admin-fees.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><span class="erp-nav-text">Fees</span></a>
+      <a href="admin-crm.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span class="erp-nav-text">CRM</span></a>
+      <a href="admin-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Materials</span></a>
+      <a href="admin-certificates.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificates</span></a>
+      <a href="admin-placement.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span class="erp-nav-text">Placements</span></a>
+      <a href="admin-notifications.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span><span class="erp-nav-text">Notifications</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">AP</div><div class="erp-user-info"><strong>Admin Priya</strong><span>Administrator</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Certificates</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge admin">Admin</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">AP</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">🏆 Certificate Generation</h1><p class="erp-page-subtitle">Generate and issue completion certificates with QR verification</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:24px">
+        <!-- Generator Panel -->
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">⚡ Generate Certificate</span></div>
+          <div class="erp-card-body">
+            <div class="erp-form-group erp-mb-16">
+              <label class="erp-label">Select Student</label>
+              <select class="erp-select" id="cert-student" onchange="fillCertForm()">
+                <option value="">-- Select an eligible student --</option>
+              </select>
+            </div>
+            <div class="erp-form-group erp-mb-16">
+              <label class="erp-label">Course</label>
+              <input type="text" class="erp-input" id="cert-course" readonly placeholder="Auto-filled"/>
+            </div>
+            <div class="erp-form-group erp-mb-16">
+              <label class="erp-label">Completion Date</label>
+              <input type="date" class="erp-input" id="cert-date"/>
+            </div>
+            <div class="erp-form-group erp-mb-16">
+              <label class="erp-label">Certificate ID</label>
+              <input type="text" class="erp-input" id="cert-id" readonly placeholder="Auto-generated"/>
+            </div>
+            <button class="erp-btn erp-btn-primary erp-w-full" onclick="generateCert()">🎓 Generate Certificate</button>
+          </div>
+          <!-- Issued list -->
+          <div class="erp-card-header" style="margin-top:8px"><span class="erp-card-title">✅ Issued Certificates</span></div>
+          <div style="padding:0 4px" id="cert-issued-list"></div>
+        </div>
+        <!-- Preview Panel -->
+        <div>
+          <div class="erp-card">
+            <div class="erp-card-header"><span class="erp-card-title">👁 Certificate Preview</span>
+              <a id="cert-download" class="erp-btn erp-btn-success erp-btn-sm" style="display:none">⬇ Download</a>
+            </div>
+            <div class="erp-card-body">
+              <div style="text-align:center;color:var(--text-muted);font-size:13px;padding:40px" id="cert-placeholder">
+                🎓 Select a student and click Generate to preview the certificate
+              </div>
+              <canvas id="cert-canvas" style="display:none;width:100%;border-radius:12px"></canvas>
+              <div style="margin-top:16px;text-align:center" id="cert-qr"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('admin');
+  document.getElementById('cert-date').valueAsDate = new Date();
+  const eligible = ERP_DATA.students.filter(s=>s.attendance>=75 && s.paid>=s.fee);
+  const certSel = document.getElementById('cert-student');
+  eligible.forEach(s => { const o = document.createElement('option'); o.value=s.id; o.textContent=`${s.name} — ${s.course}`; certSel.appendChild(o); });
+
+  // Already issued
+  const issued = ERP_DATA.students.filter(s=>s.cert);
+  const list = document.getElementById('cert-issued-list');
+  list.innerHTML = issued.map(s=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)">
+      <div><div style="font-weight:600;font-size:13px">${s.name}</div><div style="font-size:11px;color:var(--text-muted)">${s.course}</div></div>
+      <span class="erp-badge erp-badge-success">Issued</span>
+    </div>`).join('');
+
+  function fillCertForm() {
+    const id = document.getElementById('cert-student').value;
+    const s = ERP_DATA.students.find(x=>x.id===id);
+    if(!s) return;
+    document.getElementById('cert-course').value = s.course;
+    document.getElementById('cert-id').value = 'WB-CERT-' + s.id + '-' + new Date().getFullYear();
+  }
+
+  function generateCert() {
+    const id = document.getElementById('cert-student').value;
+    const s = ERP_DATA.students.find(x=>x.id===id);
+    if(!s) { ERPToast.show('Error','Please select a student.','error'); return; }
+    const date = document.getElementById('cert-date').value;
+    const certId = document.getElementById('cert-id').value || ('WB-CERT-'+s.id+'-2026');
+    document.getElementById('cert-placeholder').style.display = 'none';
+    const canvas = document.getElementById('cert-canvas');
+    canvas.style.display = 'block';
+    ERPCertificate.generate(s.name, s.course, ERPTable.fmtDate(date), certId);
+    document.getElementById('cert-download').style.display = 'flex';
+    // QR Code
+    const qrDiv = document.getElementById('cert-qr');
+    qrDiv.innerHTML = '<div id="qr-render"></div><div style="font-size:11px;color:var(--text-muted);margin-top:8px">Scan to verify certificate</div>';
+    new QRCode(document.getElementById('qr-render'), {
+      text: `https://whitebanger.com/verify?cert=${certId}`,
+      width: 100, height: 100, colorDark:'#0d1b3e', colorLight:'#ffffff'
+    });
+    ERPToast.show('Generated',`Certificate for ${s.name} generated successfully.`,'success');
+  }
+</script>
+</body>
+</html>

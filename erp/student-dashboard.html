@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="student-dashboard.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="student-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></span><span class="erp-nav-text">My Exams</span></a>
+      <a href="student-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Study Materials</span></a>
+      <a href="student-fees.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span><span class="erp-nav-text">My Fees</span></a>
+      <a href="student-certificate.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificate</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">SV</div><div class="erp-user-info"><strong>Sneha Verma</strong><span>Student</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Student View</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge student">Student</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">SV</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <!-- Welcome Banner -->
+      <div id="welcome-banner" class="erp-welcome-banner">
+        <div>
+          <div class="erp-welcome-title">Good morning, Sneha!</div>
+          <div class="erp-welcome-sub">You're enrolled in Digital Marketing · Batch 2025-26</div>
+        </div>
+        <a href="student-exams.html" class="erp-btn erp-btn-white">Take Exam</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="erp-stats-grid" style="margin-bottom:24px">
+        <div class="erp-stat-card">
+          <div class="erp-stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div class="erp-stat-info"><div class="erp-stat-value" id="s-att">0%</div><div class="erp-stat-label">My Attendance</div></div>
+        </div>
+        <div class="erp-stat-card">
+          <div class="erp-stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div class="erp-stat-info"><div class="erp-stat-value" id="s-paid">₹0</div><div class="erp-stat-label">Fee Paid</div></div>
+        </div>
+        <div class="erp-stat-card">
+          <div class="erp-stat-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div class="erp-stat-info"><div class="erp-stat-value" id="s-balance">₹0</div><div class="erp-stat-label">Balance Due</div></div>
+        </div>
+        <div class="erp-stat-card">
+          <div class="erp-stat-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="erp-stat-info"><div class="erp-stat-value" id="s-rank">—</div><div class="erp-stat-label">Exam Rank</div></div>
+        </div>
+      </div>
+
+      <!-- Mid row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+        <!-- Exam Results -->
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">My Exam Results</span><a href="student-exams.html" class="erp-btn erp-btn-ghost erp-btn-sm">All Exams</a></div>
+          <div class="erp-card-body"><div class="erp-chart-container"><canvas id="chart-scores"></canvas></div></div>
+        </div>
+        <!-- Fee Overview -->
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">Fee Overview</span></div>
+          <div class="erp-card-body">
+            <div style="margin-bottom:24px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                <span style="font-size:13px;color:var(--text-muted)">Fee Paid</span>
+                <span style="font-size:13px;font-weight:700;color:var(--success)" id="fee-paid-lbl">0</span>
+              </div>
+              <div class="erp-progress"><div class="erp-progress-bar green" id="fee-bar" style="width:0%"></div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center">
+              <div><div style="font-size:18px;font-weight:800;color:var(--primary)" id="fee-total-d">₹0</div><div style="font-size:11px;color:var(--text-muted)">Total Fee</div></div>
+              <div><div style="font-size:18px;font-weight:800;color:var(--success)" id="fee-paid-d">₹0</div><div style="font-size:11px;color:var(--text-muted)">Paid</div></div>
+              <div><div style="font-size:18px;font-weight:800;color:var(--danger)" id="fee-bal-d">₹0</div><div style="font-size:11px;color:var(--text-muted)">Balance</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Materials + Upcoming Exams -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <!-- Materials -->
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">Recent Materials</span><a href="student-materials.html" class="erp-btn erp-btn-ghost erp-btn-sm">View All</a></div>
+          <div id="recent-materials" style="padding:4px"></div>
+        </div>
+        <!-- Upcoming Exams -->
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">Upcoming Exams</span></div>
+          <div id="upcoming-exams" style="padding:4px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('student');
+  const user = ERPAuth.current();
+  const student = ERP_DATA.students.find(s=>s.email===user?.email) || ERP_DATA.students[0];
+
+  // Update header with student info
+  document.querySelectorAll('.erp-user-avatar,.erp-topbar-avatar').forEach(el=>el.textContent=student.photo);
+  document.querySelectorAll('.erp-user-info strong').forEach(el=>el.textContent=student.name);
+  document.querySelector('.erp-welcome-title').textContent = `Good morning, ${student.name.split(' ')[0]}!`;
+  document.querySelector('.erp-welcome-sub').textContent = `You're enrolled in ${student.course} · Batch 2025-26`;
+
+  // Stats
+  document.getElementById('s-att').textContent = student.attendance + '%';
+  document.getElementById('s-paid').textContent = ERPTable.fmtCurrency(student.paid);
+  document.getElementById('s-balance').textContent = ERPTable.fmtCurrency(student.fee - student.paid);
+
+  // Exam rank
+  const myResults = ERP_DATA.results.filter(r=>r.studentId===student.id);
+  const myRank = myResults.length ? '#'+myResults.sort((a,b)=>a.rank-b.rank)[0].rank : '—';
+  document.getElementById('s-rank').textContent = myRank;
+
+  // Fee display
+  const pct = Math.round((student.paid/student.fee)*100);
+  document.getElementById('fee-bar').style.width = pct+'%';
+  document.getElementById('fee-paid-lbl').textContent = pct+'% paid';
+  document.getElementById('fee-total-d').textContent = ERPTable.fmtCurrency(student.fee);
+  document.getElementById('fee-paid-d').textContent = ERPTable.fmtCurrency(student.paid);
+  document.getElementById('fee-bal-d').textContent = ERPTable.fmtCurrency(student.fee-student.paid);
+
+  // Scores chart
+  const myCourse = ERP_DATA.exams.filter(e=>e.course===student.course);
+  const myScores = myCourse.map(e=>{ const r=myResults.find(x=>x.examId===e.id); return r?r.marks:0; });
+  ERPCharts.bar(document.getElementById('chart-scores'), myCourse.map(e=>e.title.split(' ').slice(0,2).join(' ')), myScores.length?myScores:[0], 'My Score', '#8b5cf6');
+
+  // Recent Materials
+  const mats = ERP_DATA.materials.filter(m=>m.course===student.course||m.course==='General').slice(0,4);
+  document.getElementById('recent-materials').innerHTML = mats.map(m=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:24px">${m.type==='pdf'?'📄':m.type==='video'?'🎬':'📝'}</span>
+        <div><div style="font-weight:600;font-size:13px">${m.title}</div><div style="font-size:11px;color:var(--text-muted)">${m.size} · ${ERPTable.fmtDate(m.date)}</div></div>
+      </div>
+      <a href="#" class="erp-btn erp-btn-outline erp-btn-sm" onclick="event.preventDefault();ERPToast.show('Download','Downloading...','info')">Download</a>
+    </div>`).join('');
+
+  // Upcoming Exams
+  const upcoming = ERP_DATA.exams.filter(e=>e.course===student.course && new Date(e.date)>new Date());
+  document.getElementById('upcoming-exams').innerHTML = upcoming.length ? upcoming.map(e=>`
+    <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
+      <div style="font-weight:700;font-size:13px;margin-bottom:4px">${e.title}</div>
+        <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted);margin-bottom:10px">
+        <span>${ERPTable.fmtDate(e.date)}</span>
+        <span>${e.duration} min</span>
+        <span>${e.totalMarks} marks</span>
+      </div>
+      <a href="student-exams.html" class="erp-btn erp-btn-primary erp-btn-sm">Start Exam</a>
+    </div>`).join('') : '<div style="padding:24px;text-align:center;color:var(--text-muted)">No upcoming exams 🎉</div>';
+</script>
+</body>
+</html>

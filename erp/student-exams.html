@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Exams — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="student-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="student-exams.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></span><span class="erp-nav-text">My Exams</span></a>
+      <a href="student-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Study Materials</span></a>
+      <a href="student-fees.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span><span class="erp-nav-text">My Fees</span></a>
+      <a href="student-certificate.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificate</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">SV</div><div class="erp-user-info"><strong>Sneha Verma</strong><span>Student</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>My Exams</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge student">Student</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">SV</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+
+    <!-- EXAM SELECTION SCREEN -->
+    <div id="exam-selection" class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">My Exams</h1><p class="erp-page-subtitle">Take available exams and view your past results</p></div>
+      </div>
+      <!-- Available Exams -->
+      <div class="erp-card" style="margin-bottom:24px">
+        <div class="erp-card-header"><span class="erp-card-title">Available Exams</span></div>
+        <div id="avail-exams" style="padding:4px"></div>
+      </div>
+      <!-- Past Results -->
+      <div class="erp-card">
+        <div class="erp-card-header"><span class="erp-card-title">Past Results</span></div>
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead><tr><th>Exam</th><th>Date</th><th>Score</th><th>Grade</th><th>Rank</th><th>Result</th></tr></thead>
+            <tbody id="past-results"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM ENGINE -->
+    <div id="exam-screen" class="erp-content" style="display:none">
+      <div class="erp-exam-header">
+        <div class="erp-exam-title" id="exam-title">Exam Title</div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <span id="exam-q-num" style="font-size:13px;color:var(--text-muted)">Question 1 of 10</span>
+          <div class="erp-exam-timer-wrap"><span style="font-size:14px">Timer</span><span id="exam-timer" style="font-weight:800;font-variant-numeric:tabular-nums">60:00</span></div>
+        </div>
+      </div>
+      <div style="background:var(--border);border-radius:4px;height:4px;margin-bottom:24px"><div class="erp-progress-bar blue" id="exam-progress-bar" style="width:0%;height:100%;border-radius:4px;transition:width 0.3s"></div></div>
+      <div class="erp-exam-card">
+        <div id="exam-question" style="font-size:17px;font-weight:700;margin-bottom:24px;line-height:1.5"></div>
+        <div id="exam-options"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:24px">
+          <button class="erp-btn erp-btn-ghost" id="exam-prev" onclick="ERPExamEngine.prev()">← Previous</button>
+          <button class="erp-btn erp-btn-primary" onclick="ERPExamEngine.next()">Next →</button>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:16px">
+        <button class="erp-btn erp-btn-danger" onclick="ERPExamEngine.submit()">Submit Exam</button>
+      </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div id="result-screen" class="erp-content" style="display:none"></div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('student');
+  const user = ERPAuth.current();
+  const student = ERP_DATA.students.find(s=>s.email===user?.email)||ERP_DATA.students[0];
+  const courseExams = ERP_DATA.exams.filter(e=>e.course===student.course);
+  const myResults = ERP_DATA.results.filter(r=>r.studentId===student.id);
+  const takenExamIds = myResults.map(r=>r.examId);
+  const available = courseExams.filter(e=>!takenExamIds.includes(e.id));
+
+  // Available exams
+  document.getElementById('avail-exams').innerHTML = available.length ? available.map(e=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)">
+      <div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px">${e.title}</div>
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--text-muted)">
+          <span>${ERPTable.fmtDate(e.date)}</span>
+          <span>${e.duration} min</span>
+          <span>${e.totalMarks} marks</span>
+          <span>${e.questions.length} questions</span>
+        </div>
+      </div>
+      <button class="erp-btn erp-btn-primary" onclick="startExam('${e.id}')">Start Exam →</button>
+    </div>`).join('') : '<div style="padding:32px;text-align:center;color:var(--text-muted)">🎉 All exams completed! Check your results below.</div>';
+
+  // Past results
+  const pastRows = myResults.map(r=>{
+    const e = ERP_DATA.exams.find(x=>x.id===r.examId);
+    const pct = Math.round((r.marks/(e?.totalMarks||100))*100);
+    return `<tr>
+      <td style="font-weight:600">${e?.title||r.examId}</td>
+      <td>${ERPTable.fmtDate(e?.date)}</td>
+      <td>${r.marks}/${e?.totalMarks||100} <span style="font-size:11px;color:var(--text-muted)">(${pct}%)</span></td>
+      <td><span class="erp-badge erp-badge-${r.grade.includes('A')?'success':'warning'}">${r.grade}</span></td>
+      <td style="font-weight:700">#${r.rank}</td>
+      <td><span class="erp-badge erp-badge-${pct>=40?'success':'danger'}">${pct>=40?'PASS':'FAIL'}</span></td>
+    </tr>`;
+  });
+  ERPTable.renderRows('past-results', pastRows.length?pastRows:['<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px">No results yet</td></tr>']);
+
+  function startExam(examId) {
+    const exam = ERP_DATA.exams.find(e=>e.id===examId);
+    if(!exam||!exam.questions.length) { ERPToast.show('Info','This exam has no questions loaded.','info'); return; }
+    document.getElementById('exam-selection').style.display = 'none';
+    document.getElementById('exam-screen').style.display = 'block';
+    document.getElementById('exam-title').textContent = exam.title;
+    ERPExamEngine.init(exam);
+  }
+</script>
+</body>
+</html>

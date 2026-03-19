@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="admin-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="admin-students.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="erp-nav-text">Students</span></a>
+      <a href="admin-teachers.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="erp-nav-text">Teachers</span></a>
+      <a href="admin-courses.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span><span class="erp-nav-text">Courses</span></a>
+      <a href="admin-attendance.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="erp-nav-text">Attendance</span></a>
+      <a href="admin-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span><span class="erp-nav-text">Exams</span></a>
+      <a href="admin-fees.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><span class="erp-nav-text">Fees</span></a>
+      <a href="admin-crm.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span class="erp-nav-text">CRM</span></a>
+      <a href="admin-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Materials</span></a>
+      <a href="admin-certificates.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificates</span></a>
+      <a href="admin-placement.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span class="erp-nav-text">Placements</span></a>
+      <a href="admin-notifications.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span><span class="erp-nav-text">Notifications</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">AP</div><div class="erp-user-info"><strong>Admin Priya</strong><span>Administrator</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Course Management</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge admin">Admin</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">AP</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">📚 Course Management</h1><p class="erp-page-subtitle">Create, configure and manage all institute courses</p></div>
+        <div class="erp-page-actions">
+          <button class="erp-btn erp-btn-primary" onclick="ERPModal.open('modal-course')">+ Create Course</button>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="erp-stats-grid" style="margin-bottom:24px">
+        <div class="erp-stat-card"><div class="erp-stat-icon blue">📚</div><div class="erp-stat-info"><div class="erp-stat-value" id="s-courses">0</div><div class="erp-stat-label">Total Courses</div></div></div>
+        <div class="erp-stat-card"><div class="erp-stat-icon green">👥</div><div class="erp-stat-info"><div class="erp-stat-value" id="s-students">0</div><div class="erp-stat-label">Total Enrolled</div></div></div>
+        <div class="erp-stat-card"><div class="erp-stat-icon gold">💰</div><div class="erp-stat-info"><div class="erp-stat-value" id="s-revenue">0</div><div class="erp-stat-label">Total Revenue Potential</div></div></div>
+        <div class="erp-stat-card"><div class="erp-stat-icon purple">📂</div><div class="erp-stat-info"><div class="erp-stat-value" id="s-materials">0</div><div class="erp-stat-label">Study Materials</div></div></div>
+      </div>
+      <!-- Course Grid -->
+      <div id="courses-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CREATE COURSE MODAL -->
+<div class="erp-modal-overlay" id="modal-course">
+  <div class="erp-modal erp-modal-lg">
+    <div class="erp-modal-header"><span class="erp-modal-title">Create New Course</span><button class="erp-modal-close" data-modal-close>✕</button></div>
+    <div class="erp-modal-body">
+      <div class="erp-form-grid">
+        <div class="erp-form-group"><label class="erp-label">Course Name *</label><input type="text" class="erp-input" id="f-name" placeholder="e.g. Digital Marketing"/></div>
+        <div class="erp-form-group"><label class="erp-label">Duration</label><input type="text" class="erp-input" id="f-duration" placeholder="e.g. 6 months"/></div>
+        <div class="erp-form-group"><label class="erp-label">Course Fee (₹)</label><input type="number" class="erp-input" id="f-fee" placeholder="25000"/></div>
+        <div class="erp-form-group"><label class="erp-label">Assigned Teacher</label>
+          <select class="erp-select" id="f-teacher">
+            <option value="">Select Teacher</option>
+          </select>
+        </div>
+        <div class="erp-form-group full"><label class="erp-label">Description</label><textarea class="erp-textarea" id="f-desc" placeholder="Describe the course curriculum..."></textarea></div>
+      </div>
+    </div>
+    <div class="erp-modal-footer">
+      <button class="erp-btn erp-btn-ghost" data-modal-close>Cancel</button>
+      <button class="erp-btn erp-btn-primary" onclick="createCourse()">Create Course</button>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('admin');
+  let courses = [...ERP_DATA.courses];
+  const gradients = [
+    'linear-gradient(135deg,#1a56db,#3b82f6)','linear-gradient(135deg,#10b981,#34d399)',
+    'linear-gradient(135deg,#f59e0b,#fbbf24)','linear-gradient(135deg,#8b5cf6,#a78bfa)',
+    'linear-gradient(135deg,#ef4444,#f87171)','linear-gradient(135deg,#06b6d4,#22d3ee)',
+    'linear-gradient(135deg,#ec4899,#f472b6)','linear-gradient(135deg,#14b8a6,#2dd4bf)',
+  ];
+
+  const teacherSel = document.getElementById('f-teacher');
+  ERP_DATA.teachers.forEach(t => { const o = document.createElement('option'); o.value=t.name; o.textContent=t.name; teacherSel.appendChild(o); });
+
+  function renderStats() {
+    document.getElementById('s-courses').textContent = courses.length;
+    document.getElementById('s-students').textContent = courses.reduce((s,c)=>s+c.students,0);
+    document.getElementById('s-revenue').textContent = '₹'+courses.reduce((s,c)=>s+c.fee*c.students,0).toLocaleString('en-IN');
+    document.getElementById('s-materials').textContent = courses.reduce((s,c)=>s+c.materials,0);
+  }
+
+  function renderGrid() {
+    document.getElementById('courses-grid').innerHTML = courses.map((c,i) => `
+      <div class="erp-card" style="overflow:hidden">
+        <div style="background:${gradients[i%gradients.length]};padding:24px;color:#fff">
+          <div style="font-size:28px;margin-bottom:8px">📚</div>
+          <div style="font-size:17px;font-weight:800;margin-bottom:4px">${c.name}</div>
+          <div style="font-size:12px;opacity:0.85">${c.duration} · ${c.teacher}</div>
+        </div>
+        <div style="padding:20px">
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.5">${c.desc}</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+            <div style="text-align:center">
+              <div style="font-size:20px;font-weight:800;color:var(--primary)">${ERPTable.fmtCurrency(c.fee)}</div>
+              <div style="font-size:11px;color:var(--text-muted)">Course Fee</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:20px;font-weight:800;color:var(--success)">${c.students}</div>
+              <div style="font-size:11px;color:var(--text-muted)">Enrolled</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:20px;font-weight:800;color:var(--purple)">${c.materials}</div>
+              <div style="font-size:11px;color:var(--text-muted)">Materials</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <a href="admin-students.html" class="erp-btn erp-btn-outline erp-btn-sm" style="flex:1;justify-content:center">View Students</a>
+            <a href="admin-materials.html" class="erp-btn erp-btn-ghost erp-btn-sm" style="flex:1;justify-content:center">Materials</a>
+          </div>
+        </div>
+      </div>`).join('');
+    renderStats();
+  }
+
+  function createCourse() {
+    const name = document.getElementById('f-name').value.trim();
+    if(!name) { ERPToast.show('Error','Course name is required.','error'); return; }
+    courses.push({ id:'CRS00'+(courses.length+1), name, desc:document.getElementById('f-desc').value||'No description.', duration:document.getElementById('f-duration').value||'3 months', fee:Number(document.getElementById('f-fee').value)||15000, teacher:document.getElementById('f-teacher').value||'TBD', students:0, materials:0 });
+    ERPToast.show('Created',`${name} course created.`,'success');
+    ERPModal.close('modal-course'); renderGrid();
+  }
+  renderGrid();
+</script>
+</body>
+</html>

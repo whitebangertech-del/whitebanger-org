@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fee Management — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="admin-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="admin-students.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><span class="erp-nav-text">Students</span></a>
+      <a href="admin-teachers.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="erp-nav-text">Teachers</span></a>
+      <a href="admin-courses.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span><span class="erp-nav-text">Courses</span></a>
+      <a href="admin-attendance.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="erp-nav-text">Attendance</span></a>
+      <a href="admin-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span><span class="erp-nav-text">Exams</span></a>
+      <a href="admin-fees.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><span class="erp-nav-text">Fees</span></a>
+      <a href="admin-crm.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span class="erp-nav-text">CRM</span></a>
+      <a href="admin-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Materials</span></a>
+      <a href="admin-certificates.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificates</span></a>
+      <a href="admin-placement.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></span><span class="erp-nav-text">Placements</span></a>
+      <a href="admin-notifications.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span><span class="erp-nav-text">Notifications</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">AP</div><div class="erp-user-info"><strong>Admin Priya</strong><span>Administrator</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>Fee Management</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge admin">Admin</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">AP</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">💰 Fee Management</h1><p class="erp-page-subtitle">Track payments, revenue, pending dues and generate financial reports</p></div>
+        <div class="erp-page-actions">
+          <button class="erp-btn erp-btn-ghost erp-btn-sm" onclick="exportFees()">⬇ Export Fees</button>
+          <button class="erp-btn erp-btn-primary" onclick="ERPModal.open('modal-payment')">+ Record Payment</button>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="erp-fee-summary" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+        <div class="erp-fee-item" style="border-left:4px solid var(--primary)">
+          <div class="erp-fee-amount" id="fee-total">₹0</div><div class="erp-fee-label">Total Fee Billed</div>
+        </div>
+        <div class="erp-fee-item" style="border-left:4px solid var(--success)">
+          <div class="erp-fee-amount" id="fee-collected" style="color:var(--success)">₹0</div><div class="erp-fee-label">Amount Collected</div>
+        </div>
+        <div class="erp-fee-item" style="border-left:4px solid var(--danger)">
+          <div class="erp-fee-amount" id="fee-pending" style="color:var(--danger)">₹0</div><div class="erp-fee-label">Pending Amount</div>
+        </div>
+        <div class="erp-fee-item" style="border-left:4px solid var(--warning)">
+          <div class="erp-fee-amount" id="fee-overdue">0</div><div class="erp-fee-label">Overdue Students</div>
+        </div>
+      </div>
+
+      <!-- Charts + Table -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px">
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">📊 Monthly Revenue</span></div>
+          <div class="erp-card-body"><div class="erp-chart-container"><canvas id="chart-rev"></canvas></div></div>
+        </div>
+        <div class="erp-card">
+          <div class="erp-card-header"><span class="erp-card-title">💳 Payment Methods</span></div>
+          <div class="erp-card-body"><div class="erp-chart-container"><canvas id="chart-methods"></canvas></div></div>
+        </div>
+      </div>
+
+      <!-- Payment History Table -->
+      <div class="erp-card">
+        <div class="erp-card-header">
+          <span class="erp-card-title">📋 Payment History</span>
+          <div style="display:flex;gap:8px">
+            <select class="erp-filter-select" id="filter-status" onchange="filterPayments()" style="min-width:130px">
+              <option value="">All Payments</option>
+              <option value="clear">Fully Paid</option>
+              <option value="pending">Pending Balance</option>
+            </select>
+          </div>
+        </div>
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead><tr><th>Payment ID</th><th>Student</th><th>Course</th><th>Amount Paid</th><th>Balance</th><th>Method</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="payments-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RECORD PAYMENT MODAL -->
+<div class="erp-modal-overlay" id="modal-payment">
+  <div class="erp-modal">
+    <div class="erp-modal-header"><span class="erp-modal-title">Record Payment</span><button class="erp-modal-close" data-modal-close>✕</button></div>
+    <div class="erp-modal-body">
+      <div class="erp-form-grid">
+        <div class="erp-form-group"><label class="erp-label">Student</label>
+          <select class="erp-select" id="f-student"></select>
+        </div>
+        <div class="erp-form-group"><label class="erp-label">Amount (₹)</label><input type="number" class="erp-input" id="f-amount" placeholder="e.g. 5000"/></div>
+        <div class="erp-form-group"><label class="erp-label">Payment Method</label>
+          <select class="erp-select" id="f-method"><option>Cash</option><option>UPI</option><option>Card</option><option>Bank Transfer</option></select>
+        </div>
+        <div class="erp-form-group"><label class="erp-label">Date</label><input type="date" class="erp-input" id="f-date"/></div>
+      </div>
+    </div>
+    <div class="erp-modal-footer">
+      <button class="erp-btn erp-btn-ghost" data-modal-close>Cancel</button>
+      <button class="erp-btn erp-btn-primary" onclick="recordPayment()">Record Payment</button>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('admin');
+  let payments = [...ERP_DATA.payments];
+  const studentMap = {};
+  ERP_DATA.students.forEach(s => { studentMap[s.id] = s; });
+  const studentSel = document.getElementById('f-student');
+  ERP_DATA.students.forEach(s => { const o = document.createElement('option'); o.value=s.id; o.textContent=`${s.name} (${s.id})`; studentSel.appendChild(o); });
+  document.getElementById('f-date').valueAsDate = new Date();
+
+  function renderSummary() {
+    const totalFee = ERP_DATA.students.reduce((s,st)=>s+st.fee,0);
+    const collected = payments.reduce((s,p)=>s+p.amount,0);
+    const pending = totalFee - collected;
+    const overdue = ERP_DATA.students.filter(s=>s.paid<s.fee).length;
+    document.getElementById('fee-total').textContent = ERPTable.fmtCurrency(totalFee);
+    document.getElementById('fee-collected').textContent = ERPTable.fmtCurrency(collected);
+    document.getElementById('fee-pending').textContent = ERPTable.fmtCurrency(pending);
+    document.getElementById('fee-overdue').textContent = overdue + ' students';
+  }
+
+  function renderTable(data) {
+    const rows = data.map(p => {
+      const s = studentMap[p.studentId];
+      const bal = p.balance;
+      return `<tr>
+        <td><span style="font-family:monospace;font-size:12px">${p.id}</span></td>
+        <td>${s ? s.name : p.studentId}</td>
+        <td>${p.course}</td>
+        <td style="font-weight:700;color:var(--success)">${ERPTable.fmtCurrency(p.amount)}</td>
+        <td style="color:${bal>0?'var(--danger)':'var(--text-muted)'};font-weight:${bal>0?700:400}">${ERPTable.fmtCurrency(bal)}</td>
+        <td><span class="erp-badge erp-badge-info">${p.method}</span></td>
+        <td>${ERPTable.fmtDate(p.date)}</td>
+        <td><span class="erp-badge erp-badge-${bal===0?'success':'warning'}">${bal===0?'Cleared':'Balance Due'}</span></td>
+      </tr>`;
+    });
+    ERPTable.renderRows('payments-tbody', rows);
+  }
+
+  function filterPayments() {
+    const f = document.getElementById('filter-status').value;
+    const data = f === 'clear' ? payments.filter(p=>p.balance===0) : f === 'pending' ? payments.filter(p=>p.balance>0) : payments;
+    renderTable(data);
+  }
+
+  function recordPayment() {
+    const id = document.getElementById('f-student').value;
+    const amount = Number(document.getElementById('f-amount').value);
+    if(!amount) { ERPToast.show('Error','Enter a valid amount.','error'); return; }
+    const s = ERP_DATA.students.find(x=>x.id===id);
+    const balance = Math.max(0, s.fee - s.paid - amount);
+    payments.push({ id:'PAY0'+(payments.length+11), studentId:id, course:s.course, amount, date:document.getElementById('f-date').value, method:document.getElementById('f-method').value, balance });
+    s.paid = Math.min(s.fee, s.paid + amount);
+    ERPToast.show('Recorded',`Payment of ${ERPTable.fmtCurrency(amount)} recorded.`,'success');
+    ERPModal.close('modal-payment'); renderSummary(); renderTable(payments);
+  }
+
+  function exportFees() {
+    ERPExport.toCSV(payments.map(p=>({ ID:p.id, Student:studentMap[p.studentId]?.name||p.studentId, Course:p.course, Amount:p.amount, Balance:p.balance, Method:p.method, Date:p.date })), 'fees.csv');
+  }
+
+  ERPCharts.bar(document.getElementById('chart-rev'), ERP_DATA.monthlyRevenue.map(m=>m.month), ERP_DATA.monthlyRevenue.map(m=>m.revenue), 'Revenue ₹', '#1a56db');
+  ERPCharts.doughnut(document.getElementById('chart-methods'), ['Cash','UPI','Card','Bank Transfer'], [15,45,25,15], ['#10b981','#1a56db','#8b5cf6','#f59e0b']);
+  renderSummary(); renderTable(payments);
+</script>
+</body>
+</html>

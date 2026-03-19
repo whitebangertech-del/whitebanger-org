@@ -1,0 +1,24 @@
+            <div class="wb-place-logo"><img src="placement-logos/10-1.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/11-1.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/12-1.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/1-3.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/13-1.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/14-1.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/15-1.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/16.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/17.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/18.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/19.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/20.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/21.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/22.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/23.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/2-3.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/24.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/3-3.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/4-2.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/5-2.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/7-2.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/8-2.png" alt="Placement Logo" /></div>
+            <div class="wb-place-logo"><img src="placement-logos/9-1.png" alt="Placement Logo" /></div>
+

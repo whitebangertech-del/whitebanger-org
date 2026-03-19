@@ -1,0 +1,498 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Details | White Banger</title>
+  <meta name="description" content="White Banger Academy Course Details" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="wb-style.min.css" />
+</head>
+<body class="wb-bg-light">
+<!-- =========================================================
+     INTRO ANIMATION
+======================================================== -->
+<div id="wb-intro" class="wb-intro">
+  <div class="wb-intro-text wb-intro-en">White Banger</div>
+  <div class="wb-intro-text wb-intro-hi">व्हाइट बैंगर</div>
+  <div class="wb-intro-text wb-intro-pa">ਵ੍ਹਾਈਟ ਬੈਂਗਰ</div>
+</div>
+
+<!-- =========================================================
+     HEADER / NAVIGATION
+======================================================== -->
+<style>
+  /* Pipe separators between nav items */
+  .wb-nav .wb-nav-link + .wb-nav-link::before,
+  .wb-nav .wb-nav-dropdown + .wb-nav-link::before,
+  .wb-nav .wb-nav-link + .wb-nav-dropdown > a::before,
+  .wb-nav .wb-nav-dropdown + .wb-nav-dropdown > a::before {
+    content: '|';
+    margin-right: 10px;
+    color: #b0bcd0;
+    font-weight: 300;
+    font-size: 13px;
+  }
+</style>
+<header class="wb-header" id="wb-header">
+  <div class="wb-container wb-nav-inner">
+    <!-- Logo -->
+    <a href="index.html" class="wb-logo">
+      <img src="logo-main.png" alt="White Banger" class="wb-logo-img">
+    </a>
+
+    <!-- Nav Links -->
+    <nav class="wb-nav" id="wb-nav">
+      <a href="index.html" class="wb-nav-link" data-i18n="nav_home">Home</a>
+      <div class="wb-nav-dropdown">
+        <a href="#" class="wb-nav-link"><span data-i18n="nav_about">About</span> <span class="wb-dropdown-arrow">?</span></a>
+        <div class="wb-dropdown-menu">
+          <a href="about.html" data-i18n="nav_about_menu">About White Banger</a>
+          <a href="testimonials.html" data-i18n="nav_test">Testimonials</a>
+          <a href="#" data-i18n="nav_gallery">Gallery</a>
+          <a href="#" data-i18n="nav_media">Media Spotlight</a>
+          <a href="mous-collaboration.html" data-i18n="nav_mou">MOUs and Collaborations</a>
+          <a href="approvals-accreditations.html" data-i18n="nav_approvals">Approvals and Accreditations</a>
+        </div>
+      </div>
+      <div class="wb-nav-dropdown">
+        <a href="index.html#courses" class="wb-nav-link wb-active"><span data-i18n="nav_courses">Courses</span> <span class="wb-dropdown-arrow">?</span></a>
+        <div class="wb-dropdown-menu">
+          <a href="course.html?id=digital-marketing">Digital Marketing</a>
+          <a href="ai-automation.html">AI &amp; Automation</a>
+          <a href="banking-finance.html">Banking &amp; Finance</a>
+          <a href="cloud-management.html">Cloud Management</a>
+          <a href="software-development.html">Software Development</a>
+          <a href="ui-ux.html">UI/UX Design</a>
+          <a href="graphic-design.html">Graphic Design</a>
+          <a href="web-development.html">Web Designing &amp; Development</a>
+        </div>
+      </div>
+      <div class="wb-nav-dropdown">
+        <a href="#" class="wb-nav-link"><span>Student Zone</span> <span class="wb-dropdown-arrow">?</span></a>
+        <div class="wb-dropdown-menu">
+          <a href="admission-form.html">Enquiry/ Admission Form</a>
+          <a href="id-card.html">ID Card</a>
+          <a href="exam-admit-card.html">Exam Admit Card</a>
+          <a href="exam-result.html">Exam Result</a>
+          <a href="exam-schedule.html">Examination Schedule</a>
+          <a href="certificate-verification.html">Certificate Verification</a>
+          <a href="online-payment.html">Online Payment</a>
+        </div>
+      </div>
+      <a href="industry-experts.html" class="wb-nav-link" data-i18n="nav_experts">Industry Experts</a>
+      <div class="wb-nav-dropdown">
+        <a href="testimonials.html" class="wb-nav-link"><span>Student Review</span> <span class="wb-dropdown-arrow">?</span></a>
+        <div class="wb-dropdown-menu">
+          <a href="testimonials.html">Testimonials</a>
+          <a href="international-placements.html">International Placements</a>
+          <a href="national-placements.html">National Placements</a>
+        </div>
+      </div>
+      <a href="contact.html" class="wb-nav-link" data-i18n="nav_contact">Contact</a>
+    </nav>
+    
+        <!-- Lang Switcher -->
+    <div class="wb-lang-switch">
+      <button class="wb-lang-btn" onclick="switchLang('en')">EN</button>
+      <button class="wb-lang-btn" onclick="switchLang('hi')">HI</button>
+      <button class="wb-lang-btn" onclick="switchLang('pa')">PA</button>
+    </div>
+
+    <!-- CTA -->
+    <a href="erp/login.html" class="wb-btn wb-btn-primary">Login</a>
+
+    <!-- Hamburger -->
+    <button class="wb-hamburger" id="wb-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- COURSE HEADER BACKGROUND -->
+<section class="wb-course-header-area">
+  <div class="wb-container">
+    <div class="wb-breadcrumb" id="cd-breadcrumb">
+      <!-- Rendered via JS -->
+    </div>
+
+    <h1 class="wb-course-title-main" id="cd-title">Course Title</h1>
+
+    <div class="wb-course-meta-top">
+      <div class="wb-cm-author">
+        <img src="https://ui-avatars.com/api/?name=W+B&background=1a56db&color=fff&size=24" alt="White Banger"
+          style="border-radius:50%; width:24px; height:24px;">
+        <span id="cd-author">By White Banger Academy</span>
+      </div>
+      <div class="wb-cm-rating">
+        <span class="wb-stars">★★★★★</span>
+        <strong id="cd-rating">5.0</strong>
+        <span class="wb-cm-students" id="cd-students">( 10,000+ students )</span>
+      </div>
+    </div>
+
+    <div class="wb-course-badges-row">
+      <div class="wb-cb-item">
+        <span class="wb-cb-label">Course Duration</span>
+        <span class="wb-cb-value" id="cd-duration">6 Months</span>
+      </div>
+      <div class="wb-cb-item">
+        <span class="wb-cb-label">Course Level</span>
+        <span class="wb-cb-value" id="cd-level">Beginner</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE MAIN LAYOUT -->
+<section class="wb-container wb-course-layout" id="wb-cd-content-section">
+
+  <!-- LEFT CONTENT -->
+  <div class="wb-course-content-left">
+
+    <!-- What I Will Learn -->
+    <div class="wb-content-box">
+      <h2 class="wb-section-heading">What I will learn?</h2>
+      <div class="wb-learn-grid" id="cd-learnings">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- About Course -->
+    <div class="wb-content-box-transparent">
+      <h2 class="wb-section-heading">About Course</h2>
+      <p class="wb-about-text" id="cd-about">
+        <!-- Rendered via JS -->
+      </p>
+    </div>
+
+    <!-- Course Curriculum -->
+    <div class="wb-content-box-transparent">
+      <h2 class="wb-section-heading">Course Curriculum</h2>
+      <div class="wb-accordion" id="cd-curriculum">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- Eligibility -->
+    <div class="wb-content-box-transparent">
+      <h2 class="wb-section-heading">Eligibility</h2>
+      <div class="wb-doc-list" id="cd-eligibility">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- Material Includes -->
+    <div class="wb-content-box-transparent">
+      <h2 class="wb-section-heading">Material Includes</h2>
+      <div class="wb-doc-list" id="cd-includes">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="wb-content-box-transparent">
+      <h2 class="wb-section-heading">Tags</h2>
+      <div class="wb-tags-wrap" id="cd-tags">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT FLOATING CARD -->
+  <div>
+    <div class="wb-enroll-card">
+      <img src="digital-marketing.png" alt="Course Thumbnail" class="wb-enroll-img" id="cd-image">
+      <div class="wb-enroll-body">
+        <div class="wb-enroll-price-area">
+          <div class="wb-ep-title" id="cd-daily">3 Hours a Day</div>
+          <button class="wb-btn-enroll">Enroll Now</button>
+        </div>
+
+        <div class="wb-enroll-benefits">
+          <div class="wb-eb-title">Benefits Obtained :</div>
+          <div class="wb-eb-list" id="cd-benefits">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <div class="wb-enroll-share">
+          <div class="wb-share-title">SHARE :</div>
+          <div class="wb-share-icons">
+            <a href="#" class="wb-share-btn">f</a>
+            <a href="#" class="wb-share-btn">t</a>
+            <a href="#" class="wb-share-btn">in</a>
+            <a href="#" class="wb-share-btn">g</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+======================================================== -->
+  <!-- =========================================================
+     FOOTER
+======================================================== -->
+  <footer class="wb-footer">
+    <div class="wb-container">
+      <div class="wb-footer-top">
+        <!-- Logo & Info -->
+        <div class="wb-footer-col wb-footer-brand">
+          <a href="index.html" class="wb-logo">
+            <img src="logo-main.png" alt="White Banger" class="wb-logo-img">
+          </a>
+          <address class="wb-footer-contact">
+            <div class="wb-footer-contact-item">
+              <span class="wb-fc-icon-wrap wb-fc-whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+                </svg>
+              </span>
+              <div class="wb-fc-text">
+                <small data-i18n="footer_whatsapp">WhatsApp</small>
+                <strong>+91 97283-20132</strong>
+              </div>
+            </div>
+            <div class="wb-footer-contact-item">
+              <span class="wb-fc-icon-wrap wb-fc-email">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" />
+                </svg>
+              </span>
+              <div class="wb-fc-text">
+                <small data-i18n="footer_email">Email</small>
+                <strong>prikshit@whitebanger.org</strong>
+              </div>
+            </div>
+          </address>
+        </div>
+        <!-- About WB -->
+        <div class="wb-footer-col">
+          <h5 class="wb-footer-heading" data-i18n="footer_about_head">About WB</h5>
+          <ul class="wb-footer-links">
+            <li><a href="about.html" data-i18n="footer_about_us">About us</a></li>
+            <li><a href="testimonials.html" data-i18n="nav_test">Testimonials</a></li>
+            <li><a href="mous-collaboration.html" data-i18n="nav_mou">MOUs and Collaborations</a></li>
+            <li><a href="approvals-accreditations.html" data-i18n="nav_approvals">Approvals and Accreditations</a></li>
+          </ul>
+        </div>
+        <!-- Student Zone -->
+        <div class="wb-footer-col">
+          <h5 class="wb-footer-heading">Student Zone</h5>
+          <ul class="wb-footer-links">
+            <li><a href="exam-schedule.html">Exam Schedule</a></li>
+            <li><a href="exam-result.html">Results</a></li>
+            <li><a href="online-payment.html">Online Payment</a></li>
+            <li><a href="admission-form.html">Admission Form</a></li>
+          </ul>
+        </div>
+        <!-- Connect with us & Social -->
+        <div class="wb-footer-col">
+          <h5 class="wb-footer-heading" data-i18n="footer_connect">Connect with us</h5>
+          <div class="wb-social-links wb-social-blue">
+            <a href="#" class="wb-social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="#" class="wb-social-icon" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+              </svg>
+            </a>
+            <a href="#" class="wb-social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
+              </svg>
+            </a>
+            <a href="#" class="wb-social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="4" ry="4" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+          <!-- App badges -->
+          <div class="wb-app-badges wb-app-badges-column">
+            <a href="#" class="wb-app-badge"><img src="google-play-badge.png" alt="Get it on Google Play"></a>
+            <a href="#" class="wb-app-badge"><img src="app-store-badge.png" alt="Download on the App Store"></a>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+      <div class="wb-footer-bottom">
+        <div class="wb-footer-bottom-links">
+          <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer_terms">Terms of Use</a>
+          <a href="#" data-i18n="footer_sitemap">Sitemap</a>
+        </div>
+        <p class="wb-footer-copy">Copyright &copy; 2026 White Banger | Powered by White Banger Tech Private Limited</p>
+      </div>
+    </div>
+  </footer>
+
+
+    <!-- Floating Buttons & Popups -->
+    <aside aria-label="Floating Actions" class="wb-floating-buttons">
+      <!-- Call Popup -->
+      <div class="wb-fab-popup" id="wbPopupCall">
+        <div class="wb-popup-header">
+          <span class="wb-popup-title" data-i18n="fab_call_title">Call Us Directly</span>
+          <button class="wb-popup-close" id="wbCloseCall">&times;</button>
+        </div>
+        <div class="wb-popup-body">
+           <p data-i18n="fab_call_desc">Please note that our phone lines are open from <strong>9:00 AM to 5:00 PM</strong>, Monday to Saturday.</p>
+           <a href="tel:+919728320132" class="wb-btn wb-btn-primary wb-btn-full" data-i18n="fab_call_btn">Call Now</a>
+        </div>
+      </div>
+
+      <!-- WhatsApp Popup -->
+      <div class="wb-fab-popup" id="wbPopupWhatsapp">
+        <div class="wb-popup-header wb-whatsapp-header">
+          <img src="inquiry-modal-bg.png" alt="Support" class="wb-wa-avatar">
+          <div class="wb-wa-info">
+            <span class="wb-wa-title" data-i18n="fab_wa_title">Chat with us</span>
+            <span class="wb-wa-status" data-i18n="fab_wa_status">We reply within 10-20 minutes</span>
+          </div>
+          <button class="wb-popup-close" id="wbCloseWhatsapp">&times;</button>
+        </div>
+        <div class="wb-popup-body">
+          <p data-i18n="fab_wa_desc">Our WhatsApp support is available <strong>24/7</strong> for any inquiries.</p>
+          <a href="https://wa.me/919728320132" target="_blank" class="wb-btn wb-btn-whatsapp wb-btn-full" data-i18n="fab_wa_btn">Start Chat</a>
+        </div>
+      </div>
+
+      <button class="wb-fab wb-fab-inquiry" id="wbFabInquiry" aria-label="Inquiry">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+        </svg>
+      </button>
+      <button class="wb-fab wb-fab-whatsapp" id="wbFabWhatsappBtn" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.513-18.397A11.966 11.966 0 0012.046.012h-.002A11.942 11.942 0 000 11.956c0 1.956.51 3.864 1.478 5.541l-1.475 5.39L5.512 21.41A11.921 11.921 0 0012.042 23.97v-.001c6.588 0 11.953-5.365 11.956-11.951.001-3.193-1.24-6.199-3.496-8.455" />
+        </svg>
+      </button>
+      <button class="wb-fab wb-fab-call" id="wbFabCallBtn" aria-label="Call">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+        </svg>
+      </button>
+    </aside>
+
+    <!-- Inquiry Modal (Redesigned) -->
+    <div class="wb-modal" id="wbInquiryModal">
+      <div class="wb-modal-content wb-modal-inquiry">
+        <div class="wb-modal-inquiry-left">
+          <div class="wb-modal-inquiry-left-content">
+            <h3 data-i18n="form_start_title">Start Your Journey</h3>
+            <p data-i18n="form_start_desc">Join White Banger and accelerate your career. Our support team is available 24/7 to assist you.</p>
+          </div>
+        </div>
+        <div class="wb-modal-inquiry-right">
+          <button class="wb-modal-close" id="wbModalClose" aria-label="Close">&times;</button>
+          <div class="wb-mir-header">
+            <h3 data-i18n="form_enq_title">Enquiry Form</h3>
+            <p data-i18n="form_enq_desc">Please fill out the form below</p>
+          </div>
+          <form class="wb-inquiry-form" id="wbInquiryForm">
+            <!-- Top Tabs -->
+            <div class="wb-form-tabs">
+              <div class="wb-form-tab active" data-i18n="form_tab_self">Self</div>
+              <div class="wb-form-tab" data-i18n="form_tab_staff">By Staff</div>
+            </div>
+
+            <div class="wb-staff-field" style="display: none;">
+              <label class="wb-form-label" data-i18n="form_staff_id">Staff Member ID</label>
+              <div class="wb-form-group has-icon">
+                <span class="wb-input-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                  </svg>
+                </span>
+                <input type="text" placeholder="Enter staff member ID">
+              </div>
+            </div>
+
+            <div class="wb-form-group has-icon">
+              <span class="wb-input-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+              </span>
+              <input type="text" placeholder="Enter Your Name.." required>
+            </div>
+
+            <div class="wb-form-group has-icon">
+              <span class="wb-input-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+              </span>
+              <input type="tel" placeholder="Enter Your Contact No..." required>
+            </div>
+
+            <div class="wb-form-group has-icon">
+              <span class="wb-input-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </span>
+              <input type="email" placeholder="Enter Your Email..." required>
+            </div>
+
+            <div class="wb-form-group has-icon">
+              <span class="wb-input-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+              </span>
+              <input type="text" placeholder="Enter Your Address ..." required>
+            </div>
+
+            <!-- Select Box -->
+            <label class="wb-form-label" data-i18n="form_select_course">Select Course</label>
+            <div class="wb-form-group has-icon" style="margin-bottom: 24px;">
+              <span class="wb-input-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z" />
+                </svg>
+              </span>
+              <select required>
+                <option value="" disabled selected>Select a course</option>
+                <option value="digital-marketing">Digital Marketing</option>
+                <option value="software-dev">Software Development</option>
+                <option value="ui-ux">UI/UX Design</option>
+                <option value="ai-automation">AI & Automation</option>
+                <option value="banking-finance">Banking & Finance</option>
+              </select>
+            </div>
+
+            <button type="submit" class="wb-btn wb-btn-primary wb-btn-full">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+              </svg>
+              <span data-i18n="form_submit">Submit Enquiry</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  <script src="wb-translations.min.js"></script>
+<script src="wb-script.min.js"></script>
+</body>
+</html>
+
+
+
+
+

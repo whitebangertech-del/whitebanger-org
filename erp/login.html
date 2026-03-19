@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <style>
+    body { background: transparent; }
+    .erp-login-form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .erp-login-label { font-size: 12px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
+    .erp-login-input {
+      padding: 11px 14px; border: 2px solid #e5e7eb; border-radius: 8px;
+      font-size: 14px; color: #111; background: #fff; outline: none; transition: all 0.2s;
+    }
+    .erp-login-input:focus { border-color: #1a56db; box-shadow: 0 0 0 3px rgba(26,86,219,0.1); }
+    .erp-login-btn {
+      width: 100%; padding: 13px; background: #1a56db; color: #fff;
+      border: none; border-radius: 8px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; margin-top: 8px;
+    }
+    .erp-login-btn:hover { background: #1648c0; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,86,219,0.3); }
+    .erp-login-err { background: #fee2e2; color: #dc2626; padding: 10px 14px; border-radius: 6px; font-size: 13px; display: none; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+<div class="erp-login-page">
+  <div class="erp-login-card">
+    <!-- Logo -->
+    <div class="erp-login-logo">
+      <div class="erp-login-logo-icon">WB</div>
+      <div class="erp-login-logo-text">
+        <strong>White Banger</strong>
+        <span>Management System</span>
+      </div>
+    </div>
+
+    <h1 class="erp-login-title">Welcome Back</h1>
+    <p class="erp-login-subtitle">Sign in to your account to continue</p>
+
+    <!-- Demo Quick Login -->
+    <div class="erp-login-demo">
+      <h4>Demo Access</h4>
+      <div class="erp-demo-btns">
+        <button class="erp-demo-btn" onclick="demoLogin('admin')">
+          <span style="background:#1a56db"></span> Admin
+        </button>
+        <button class="erp-demo-btn" onclick="demoLogin('teacher')">
+          <span style="background:#10b981"></span> Teacher
+        </button>
+        <button class="erp-demo-btn" onclick="demoLogin('student')">
+          <span style="background:#f59e0b"></span> Student
+        </button>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-err" class="erp-login-err">Invalid email or password. Please try again.</div>
+    <form id="login-form" onsubmit="handleLogin(event)">
+      <div class="erp-login-form-group">
+        <label class="erp-login-label">Email Address</label>
+        <input type="email" id="login-email" class="erp-login-input" placeholder="email@gmail.com" required/>
+      </div>
+      <div class="erp-login-form-group">
+        <label class="erp-login-label">Password</label>
+        <input type="password" id="login-pass" class="erp-login-input" placeholder="123" required/>
+      </div>
+      <button type="submit" class="erp-login-btn">Sign In →</button>
+    </form>
+
+    <p style="font-size:11px;color:#999;text-align:center;margin-top:20px">
+      © 2026 White Banger Tech Pvt Ltd · All rights reserved
+    </p>
+  </div>
+</div>
+
+<script src="erp-data.js"></script>
+<script>
+  // Redirect if already logged in
+  const u = ERPAuth.current();
+  if (u) {
+    const map = { admin:'admin-dashboard.html', teacher:'teacher-dashboard.html', student:'student-dashboard.html' };
+    window.location.href = map[u.role] || 'admin-dashboard.html';
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const pass  = document.getElementById('login-pass').value;
+    const user  = ERPAuth.login(email, pass);
+    if (user) {
+      const map = { admin:'admin-dashboard.html', teacher:'teacher-dashboard.html', student:'student-dashboard.html' };
+      window.location.href = map[user.role] || 'admin-dashboard.html';
+    } else {
+      document.getElementById('login-err').style.display = 'block';
+    }
+  }
+
+  function demoLogin(role) {
+    const user = ERPAuth.demoLogin(role);
+    if (user) {
+      const map = { admin:'admin-dashboard.html', teacher:'teacher-dashboard.html', student:'student-dashboard.html' };
+      window.location.href = map[role];
+    }
+  }
+</script>
+</body>
+</html>

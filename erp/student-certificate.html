@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Certificate — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="student-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="student-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></span><span class="erp-nav-text">My Exams</span></a>
+      <a href="student-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Study Materials</span></a>
+      <a href="student-fees.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><span class="erp-nav-text">My Fees</span></a>
+      <a href="student-certificate.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificate</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">SV</div><div class="erp-user-info"><strong>Sneha Verma</strong><span>Student</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>My Certificate</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge student">Student</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">SV</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">🏆 My Certificate</h1><p class="erp-page-subtitle">Download your course completion certificate</p></div>
+      </div>
+
+      <!-- Eligibility Check -->
+      <div class="erp-card" style="margin-bottom:24px">
+        <div class="erp-card-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px">
+            <div style="text-align:center;padding:16px;border-radius:12px;border:2px solid var(--border)" id="crit-att">
+              <div style="font-size:28px;margin-bottom:8px">✅</div>
+              <div style="font-weight:700;margin-bottom:4px" id="att-val">—</div>
+              <div style="font-size:12px;color:var(--text-muted)">Attendance ≥ 75%</div>
+            </div>
+            <div style="text-align:center;padding:16px;border-radius:12px;border:2px solid var(--border)" id="crit-fee">
+              <div style="font-size:28px;margin-bottom:8px">💰</div>
+              <div style="font-weight:700;margin-bottom:4px" id="fee-val">—</div>
+              <div style="font-size:12px;color:var(--text-muted)">Fees Fully Paid</div>
+            </div>
+            <div style="text-align:center;padding:16px;border-radius:12px;border:2px solid var(--border)" id="crit-exam">
+              <div style="font-size:28px;margin-bottom:8px">📝</div>
+              <div style="font-weight:700;margin-bottom:4px" id="exam-val">—</div>
+              <div style="font-size:12px;color:var(--text-muted)">Exams Passed</div>
+            </div>
+          </div>
+          <div id="cert-status-msg" style="text-align:center;font-size:15px;font-weight:600;padding:16px;border-radius:10px"></div>
+        </div>
+      </div>
+
+      <!-- Certificate canvas -->
+      <div class="erp-card" id="cert-card" style="display:none">
+        <div class="erp-card-header">
+          <span class="erp-card-title">🎓 Certificate of Completion</span>
+          <a id="cert-download" class="erp-btn erp-btn-primary">⬇ Download Certificate</a>
+        </div>
+        <div class="erp-card-body" style="text-align:center">
+          <canvas id="cert-canvas" style="max-width:100%;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.15)"></canvas>
+          <div id="cert-qr" style="margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:8px">
+            <div id="qr-render"></div>
+            <div style="font-size:12px;color:var(--text-muted)">Scan QR code to verify this certificate online</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script><script src="erp-script.js"></script>
+<script>
+  ERPAuth.guard('student');
+  const user = ERPAuth.current();
+  const student = ERP_DATA.students.find(s=>s.email===user?.email)||ERP_DATA.students[0];
+  const myResults = ERP_DATA.results.filter(r=>r.studentId===student.id);
+  const passedExams = myResults.filter(r=>{ const e=ERP_DATA.exams.find(x=>x.id===r.examId); return Math.round((r.marks/(e?.totalMarks||100))*100)>=40; });
+
+  const attOk  = student.attendance >= 75;
+  const feeOk  = student.paid >= student.fee;
+  const examOk = passedExams.length > 0 || student.cert;
+
+  // Criteria cards
+  document.getElementById('att-val').textContent = student.attendance+'%';
+  document.getElementById('fee-val').textContent = feeOk ? 'Fully Paid' : `Balance: ${ERPTable.fmtCurrency(student.fee-student.paid)}`;
+  document.getElementById('exam-val').textContent = passedExams.length+' exam(s) passed';
+
+  function styleCrit(id, ok) {
+    const el = document.getElementById(id);
+    el.style.borderColor = ok ? 'var(--success)' : 'var(--danger)';
+    el.style.background   = ok ? 'rgba(16,185,129,0.06)' : 'rgba(239,68,68,0.06)';
+  }
+  styleCrit('crit-att', attOk); styleCrit('crit-fee', feeOk); styleCrit('crit-exam', examOk);
+
+  const eligible = attOk && feeOk && examOk;
+  const msg = document.getElementById('cert-status-msg');
+  if(eligible) {
+    msg.style.background = 'rgba(16,185,129,0.1)';
+    msg.style.color = 'var(--success)';
+    msg.textContent = '🎉 Congratulations! You are eligible to receive your certificate.';
+    document.getElementById('cert-card').style.display = 'block';
+    // Generate
+    const certId = 'WB-CERT-'+student.id+'-2026';
+    ERPCertificate.generate(student.name, student.course, ERPTable.fmtDate(new Date()), certId);
+    new QRCode(document.getElementById('qr-render'), { text:'https://whitebanger.com/verify?cert='+certId, width:100, height:100, colorDark:'#0d1b3e', colorLight:'#ffffff' });
+  } else {
+    msg.style.background = 'rgba(239,68,68,0.08)';
+    msg.style.color = 'var(--danger)';
+    msg.textContent = '❌ Please complete all requirements above to be eligible for a certificate.';
+  }
+</script>
+</body>
+</html>

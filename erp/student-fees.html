@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Fees — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <!-- Razorpay SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Management System</span></div></div>
+    <nav class="erp-sidebar-nav"><div class="erp-nav-section">
+      <a href="student-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a>
+      <a href="student-exams.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></span><span class="erp-nav-text">My Exams</span></a>
+      <a href="student-materials.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></span><span class="erp-nav-text">Study Materials</span></a>
+      <a href="student-fees.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span><span class="erp-nav-text">My Fees</span></a>
+      <a href="student-certificate.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="erp-nav-text">Certificate</span></a>
+    </div></nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar">SV</div><div class="erp-user-info"><strong>Sneha Verma</strong><span>Student</span></div></div></div>
+  </aside>
+  <div class="erp-main" id="erp-main">
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="erp-breadcrumb"><span>Dashboard</span><span>›</span><strong>My Fees</strong></div>
+      <div class="erp-topbar-actions">
+        <span class="erp-role-badge student">Student</span>
+        <button class="erp-topbar-btn" id="erp-theme-toggle" title="Toggle Theme"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+        <div class="erp-topbar-avatar">SV</div>
+        <button class="erp-btn erp-btn-ghost erp-btn-sm" data-action="logout">Logout</button>
+      </div>
+    </header>
+    <div class="erp-content">
+      <div class="erp-page-header">
+        <div><h1 class="erp-page-title">My Fee Status</h1><p class="erp-page-subtitle">View your payment history and pay outstanding balance securely via Razorpay</p></div>
+      </div>
+
+      <!-- Summary Card -->
+      <div class="erp-card" style="margin-bottom:24px">
+        <div class="erp-card-body">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:20px">
+            <div style="text-align:center"><div style="font-size:28px;font-weight:900;color:var(--primary)" id="f-total">₹0</div><div style="font-size:12px;color:var(--text-muted)">Total Fee</div></div>
+            <div style="text-align:center"><div style="font-size:28px;font-weight:900;color:var(--success)" id="f-paid">₹0</div><div style="font-size:12px;color:var(--text-muted)">Paid</div></div>
+            <div style="text-align:center"><div style="font-size:28px;font-weight:900;color:var(--danger)" id="f-bal">₹0</div><div style="font-size:12px;color:var(--text-muted)">Balance</div></div>
+            <div style="text-align:center"><div style="font-size:28px;font-weight:900" id="f-status">—</div><div style="font-size:12px;color:var(--text-muted)">Status</div></div>
+          </div>
+          <div class="erp-progress" style="height:14px;border-radius:8px">
+            <div class="erp-progress-bar green" id="f-bar" style="width:0%;height:100%;border-radius:8px"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:12px;color:var(--text-muted)">
+            <span id="f-pct">0% paid</span><span>100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pay Now or Fully Paid Card -->
+      <div class="erp-card" style="margin-bottom:24px" id="pay-card">
+        <div class="erp-card-body" style="text-align:center;padding:32px">
+          <div style="width:52px;height:52px;background:var(--primary-light);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="width:24px;height:24px"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <div style="font-size:18px;font-weight:800;margin-bottom:6px">Pay Your Balance</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">Secure payments via Razorpay — UPI, Cards, Net Banking, EMI accepted</div>
+
+          <!-- Custom amount -->
+          <div style="display:flex;gap:12px;justify-content:center;align-items:flex-end;max-width:400px;margin:0 auto 20px">
+            <div style="flex:1;text-align:left">
+              <label class="erp-label erp-mb-8">Amount to Pay (₹)</label>
+              <input type="number" class="erp-input" id="pay-amount" placeholder="Enter amount" min="1"/>
+            </div>
+            <button class="erp-btn erp-btn-ghost erp-btn-sm" onclick="setFullAmount()" style="flex-shrink:0">Pay Full</button>
+          </div>
+
+          <!-- Payment Method Logos -->
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+            <span style="background:var(--gray-100);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600">UPI</span>
+            <span style="background:var(--gray-100);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600">Credit Card</span>
+            <span style="background:var(--gray-100);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600">Debit Card</span>
+            <span style="background:var(--gray-100);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600">Net Banking</span>
+            <span style="background:var(--gray-100);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600">EMI</span>
+          </div>
+
+          <button class="erp-btn erp-btn-primary" style="padding:14px 48px;font-size:15px;font-weight:800" onclick="startPayment()">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="margin-right:6px"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+            Pay Now via Razorpay
+          </button>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:12px">256-bit SSL Encrypted &middot; Powered by Razorpay</div>
+        </div>
+      </div>
+
+      <!-- Receipt (shown after success) -->
+      <div id="receipt-area"></div>
+
+      <!-- Payment History -->
+      <div class="erp-card">
+        <div class="erp-card-header">
+          <span class="erp-card-title">Payment History</span>
+          <button class="erp-btn erp-btn-ghost erp-btn-sm" onclick="exportHistory()">Export</button>
+        </div>
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead><tr><th>Payment ID</th><th>Amount</th><th>Method</th><th>Date</th><th>Balance After</th><th>Receipt</th></tr></thead>
+            <tbody id="fee-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="erp-overlay-drop" id="erp-overlay"></div>
+<script src="erp-data.js"></script>
+<script src="erp-script.js"></script>
+<script src="erp-razorpay.js"></script>
+<script>
+  ERPAuth.guard('student');
+  const user = ERPAuth.current();
+  let student = ERP_DATA.students.find(s=>s.email===user?.email) || ERP_DATA.students[0];
+  let myPayments = [...ERP_DATA.payments.filter(p=>p.studentId===student.id)];
+
+  function updateUI() {
+    const pct = Math.round((student.paid/student.fee)*100);
+    const bal = student.fee - student.paid;
+    const feeStatus = student.paid>=student.fee ? 'Cleared' : student.paid>0 ? 'Partial' : 'Pending';
+    document.getElementById('f-total').textContent = ERPTable.fmtCurrency(student.fee);
+    document.getElementById('f-paid').textContent  = ERPTable.fmtCurrency(student.paid);
+    document.getElementById('f-bal').textContent   = ERPTable.fmtCurrency(bal);
+    document.getElementById('f-status').textContent = feeStatus;
+    document.getElementById('f-bar').style.width   = pct+'%';
+    document.getElementById('f-pct').textContent   = pct+'% paid';
+    document.getElementById('pay-amount').max = bal;
+    if(bal <= 0) {
+      document.getElementById('pay-card').innerHTML = `<div class="erp-card-body" style="text-align:center;padding:32px"><div style="width:52px;height:52px;background:var(--success-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5" style="width:24px;height:24px"><polyline points="20 6 9 17 4 12"/></svg></div><div style="font-size:20px;font-weight:800;color:var(--success)">All fees cleared!</div><div style="font-size:13px;color:var(--text-muted);margin-top:6px">You have no outstanding balance.</div></div>`;
+    }
+    renderHistory();
+  }
+
+  function renderHistory() {
+    const rows = myPayments.length ? myPayments.map(p=>`<tr>
+      <td><span style="font-family:monospace;font-size:11px;color:var(--primary)">${p.id}</span></td>
+      <td style="font-weight:700;color:var(--success)">${ERPTable.fmtCurrency(p.amount)}</td>
+      <td><span class="erp-badge ${p.method==='Razorpay'?'erp-badge-primary':'erp-badge-info'}">${p.method}</span></td>
+      <td>${ERPTable.fmtDate(p.date)}</td>
+      <td style="color:${p.balance>0?'var(--danger)':'var(--success)'}">${ERPTable.fmtCurrency(p.balance)}</td>
+      <td><button class="erp-btn erp-btn-ghost erp-btn-sm" onclick="printReceipt('${p.id}','${p.amount}')">Receipt</button></td>
+    </tr>`) : ['<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px">No payments recorded yet</td></tr>'];
+    ERPTable.renderRows('fee-tbody', rows);
+  }
+
+  function setFullAmount() {
+    document.getElementById('pay-amount').value = student.fee - student.paid;
+  }
+
+  function startPayment() {
+    const amount = parseFloat(document.getElementById('pay-amount').value);
+    if (!amount || amount <= 0) { ERPToast.show('Error','Please enter a valid amount.','error'); return; }
+    const bal = student.fee - student.paid;
+    if (amount > bal) { ERPToast.show('Error',`Amount cannot exceed balance of ${ERPTable.fmtCurrency(bal)}.`,'error'); return; }
+
+    ERPRazorpay.pay({
+      amount,
+      name:      student.name,
+      email:     student.email,
+      phone:     student.phone?.replace(/\D/g,'').slice(-10),
+      desc:      `${student.course} — Fee Payment`,
+      studentId: student.id,
+      onSuccess(response) {
+        // Update local state
+        const today = new Date().toISOString().split('T')[0];
+        student.paid += amount;
+        const newBal = student.fee - student.paid;
+        const payId = `PAY${String(myPayments.length+1).padStart(3,'0')}-RZP`;
+        myPayments.unshift({ id:payId, studentId:student.id, course:student.course, amount, date:today, method:'Razorpay', balance:newBal, razorpay_id:response.razorpay_payment_id });
+        // Show receipt
+        document.getElementById('receipt-area').innerHTML = ERPRazorpay.receiptHTML(
+          response.razorpay_payment_id, amount, student.name, student.course, ERPTable.fmtDate(today)
+        );
+        // Scroll to receipt
+        document.getElementById('receipt-area').scrollIntoView({ behavior:'smooth' });
+        updateUI();
+      },
+      onFailure(err) {
+        console.error('Razorpay failure:', err);
+      }
+    });
+  }
+
+  function printReceipt(id, amount) {
+    ERPToast.show('Receipt','Receipt for '+id+' generated.','success');
+  }
+
+  function exportHistory() {
+    ERPExport.toCSV(myPayments.map(p=>({ID:p.id,Amount:p.amount,Method:p.method,Date:p.date,Balance:p.balance})),'fee_history.csv');
+  }
+
+  updateUI();
+</script>
+</body>
+</html>

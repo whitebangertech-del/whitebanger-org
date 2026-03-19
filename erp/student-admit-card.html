@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Admit Card — Student Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;909&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="erp-style.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<div class="erp-layout">
+  <aside class="erp-sidebar" id="erp-sidebar">
+    <div class="erp-sidebar-brand"><div class="erp-brand-logo">WB</div><div class="erp-brand-text"><strong>White Banger</strong><span>Student Portal</span></div></div>
+    <nav class="erp-sidebar-nav">
+      <div class="erp-nav-section"><div class="erp-nav-label">Main</div><a href="student-dashboard.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/></svg></span><span class="erp-nav-text">Dashboard</span></a></div>
+      <div class="erp-nav-section"><div class="erp-nav-label">My Documents</div>
+        <a href="student-id-card.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/></svg></span><span class="erp-nav-text">My ID Card</span></a>
+        <a href="student-admit-card.html" class="erp-nav-link active"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg></span><span class="erp-nav-text">Admit Card</span></a>
+        <a href="student-results.html" class="erp-nav-link"><span class="erp-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg></span><span class="erp-nav-text">My Results</span></a>
+      </div>
+    </nav>
+    <div class="erp-sidebar-footer"><div class="erp-sidebar-user"><div class="erp-user-avatar" id="user-avatar">ST</div><div class="erp-user-info"><strong id="user-name">Student</strong><span>Student</span></div></div></div>
+  </aside>
+
+  <div class="erp-main" id="erp-main">
+    <div class="erp-overlay-drop"></div>
+    <header class="erp-topbar">
+      <button class="erp-topbar-toggle" id="erp-sidebar-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <h1 class="erp-topbar-title">My Admit Cards</h1>
+      <div class="erp-topbar-actions">
+        <button class="erp-topbar-btn" id="erp-theme-toggle" onclick="ERPTheme.toggle()"></button>
+        <button class="erp-topbar-btn" onclick="ERPAuth.logout()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </header>
+
+    <div class="erp-content">
+
+      <!-- Exam Selection -->
+      <div class="erp-card" style="margin-bottom: 24px">
+        <div class="erp-card-header"><span class="erp-card-title">📝 Select Exam</span></div>
+        <div class="erp-card-body">
+          <div class="erp-form-group">
+            <label class="erp-form-label">Choose an upcoming exam to view/download admit card</label>
+            <select id="exam-select" class="erp-form-input" onchange="generateAdmitCard()">
+              <option value="">Select Exam</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admit Card Display -->
+      <div class="erp-card">
+        <div class="erp-card-header">
+          <span class="erp-card-title">📄 Admit Card</span>
+          <div style="display: flex; gap: 8px">
+            <button class="erp-btn erp-btn-success erp-btn-sm" onclick="downloadAdmitCard()" id="download-btn" disabled>⬇ Download</button>
+            <button class="erp-btn erp-btn-ghost erp-btn-sm" onclick="printAdmitCard()" id="print-btn" disabled>🖨 Print</button>
+          </div>
+        </div>
+        <div class="erp-card-body">
+          <div id="admit-card-content" style="min-height: 400px; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1)">
+            <div style="text-align: center; color: var(--text-muted); padding: 80px 20px">
+              <div style="font-size: 48px; margin-bottom: 16px">📋</div>
+              <div>Select an exam to view your admit card</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="erp-toast-container"></div>
+
+<script src="erp-data.js"></script>
+<script src="erp-script.js"></script>
+<script>
+  const currentUser = ERPAuth.guard('student');
+  ERPTheme.init();
+  ERPSidebar.init();
+
+  if (currentUser) {
+    document.getElementById('user-name').textContent = currentUser.name;
+    document.getElementById('user-avatar').textContent = currentUser.avatar;
+  }
+
+  let selectedExam = null;
+  const student = ERP_DATA.students.find(s => s.id === currentUser.id);
+
+  // Load upcoming exams
+  function loadExams() {
+    const examSelect = document.getElementById('exam-select');
+    const today = new Date();
+
+    // Filter upcoming exams
+    const upcomingExams = ERP_DATA.exams.filter(e => new Date(e.date) >= today);
+
+    examSelect.innerHTML = '<option value="">Select Exam</option>' +
+      upcomingExams.map(e => `<option value="${e.id}">${e.name} - ${new Date(e.date).toLocaleDateString('en-IN')}</option>`).join('');
+  }
+
+  function generateAdmitCard() {
+    const examId = document.getElementById('exam-select').value;
+    if (!examId) {
+      document.getElementById('admit-card-content').innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 80px 20px"><div style="font-size: 48px; margin-bottom: 16px">📋</div><div>Select an exam to view your admit card</div></div>';
+      document.getElementById('download-btn').disabled = true;
+      document.getElementById('print-btn').disabled = true;
+      return;
+    }
+
+    selectedExam = ERP_DATA.exams.find(e => e.id === examId);
+
+    const content = document.getElementById('admit-card-content');
+    content.innerHTML = `
+      <div style="border: 3px solid var(--primary); padding: 30px">
+        <div style="text-align: center; border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-bottom: 20px">
+          <h1 style="color: var(--primary); margin: 0; font-size: 28px; font-weight: 800">WHITE BANGER</h1>
+          <p style="margin: 4px 0 0; color: var(--text-muted)">India's No.1 Skill Development Platform</p>
+          <h2 style="margin: 16px 0 0; font-size: 20px; font-weight: 700">EXAMINATION ADMIT CARD</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 20px; margin-bottom: 30px">
+          <div>
+            <table style="width: 100%; border-collapse: collapse">
+              <tr style="border-bottom: 1px solid var(--border)"><td style="padding: 12px 0; font-weight: 600; width: 40%">Student Name:</td><td style="padding: 12px 0">${student.name}</td></tr>
+              <tr style="border-bottom: 1px solid var(--border)"><td style="padding: 12px 0; font-weight: 600">Roll Number:</td><td style="padding: 12px 0">${student.id}</td></tr>
+              <tr style="border-bottom: 1px solid var(--border)"><td style="padding: 12px 0; font-weight: 600">Course:</td><td style="padding: 12px 0">${student.course}</td></tr>
+              <tr><td style="padding: 12px 0; font-weight: 600">Exam Center:</td><td style="padding: 12px 0">White Banger Main Campus</td></tr>
+            </table>
+          </div>
+          <div style="width: 120px; height: 140px; border: 2px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 48px; background: var(--gray-50)">${student.avatar}</div>
+        </div>
+
+        <div style="background: var(--gray-50); padding: 20px; border-radius: 8px; margin-bottom: 30px">
+          <h3 style="margin: 0 0 16px; font-size: 16px; font-weight: 700; color: var(--primary)">Examination Details</h3>
+          <table style="width: 100%; border-collapse: collapse">
+            <tr style="border-bottom: 1px solid var(--border)"><td style="padding: 10px 0; font-weight: 600; width: 30%">Exam Name:</td><td style="padding: 10px 0">${selectedExam.name}</td></tr>
+            <tr style="border-bottom: 1px solid var(--border)"><td style="padding: 10px 0; font-weight: 600">Date:</td><td style="padding: 10px 0">${new Date(selectedExam.date).toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td></tr>
+            <tr style="border-bottom: 1px solid var(--border)"><td style="padding: 10px 0; font-weight: 600">Time:</td><td style="padding: 10px 0">${selectedExam.time || '10:00 AM'}</td></tr>
+            <tr style="border-bottom: 1px solid var(--border)"><td style="padding: 10px 0; font-weight: 600">Duration:</td><td style="padding: 10px 0">${selectedExam.duration} minutes</td></tr>
+            <tr><td style="padding: 10px 0; font-weight: 600">Total Marks:</td><td style="padding: 10px 0">${selectedExam.totalMarks}</td></tr>
+          </table>
+        </div>
+
+        <div style="border: 1px solid var(--warning); background: var(--warning-light); padding: 16px; border-radius: 8px; margin-bottom: 30px">
+          <h3 style="margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--warning)">Important Instructions:</h3>
+          <ul style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.8">
+            <li>Bring this admit card and valid ID proof to the examination center</li>
+            <li>Report to the center 30 minutes before the exam</li>
+            <li>Electronic devices are strictly prohibited</li>
+            <li>Follow all examination guidelines</li>
+          </ul>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 40px; border-top: 2px solid var(--border)">
+          <div style="text-align: center"><div style="border-top: 2px solid var(--text-primary); padding-top: 8px; display: inline-block; min-width: 200px">Student Signature</div></div>
+          <div style="text-align: center"><div style="border-top: 2px solid var(--text-primary); padding-top: 8px; display: inline-block; min-width: 200px">Principal/Dean Signature</div></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; font-size: 12px; color: var(--text-muted)">
+          <p style="margin: 4px 0">White Banger Tech Pvt Ltd | Contact: +91 97283-20132</p>
+          <p style="margin: 4px 0">Email: prikshit@whitebanger.org | Website: www.whitebanger.org</p>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('download-btn').disabled = false;
+    document.getElementById('print-btn').disabled = false;
+    ERPToast.show('Success', 'Admit card generated successfully!', 'success');
+  }
+
+  async function downloadAdmitCard() {
+    if (!selectedExam) return;
+
+    const element = document.getElementById('admit-card-content');
+    const canvas = await html2canvas(element, { scale: 2, backgroundColor: '#ffffff' });
+    const imgData = canvas.toDataURL('image/png');
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const imgWidth = 210;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+    pdf.save(`Admit-Card-${student.id}-${selectedExam.id}.pdf`);
+    ERPToast.show('Success', 'Admit card downloaded!', 'success');
+  }
+
+  function printAdmitCard() {
+    if (!selectedExam) return;
+    window.print();
+  }
+
+  loadExams();
+</script>
+</body>
+</html>

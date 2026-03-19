@@ -1,7 +1,6 @@
 .gemini/
 tmp/
 .ftp-password
-_agents/
 node_modules/
 .env
 *.log

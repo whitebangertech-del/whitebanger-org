@@ -922,26 +922,6 @@ table.erp-table {
 .erp-login-logo-text span { font-size: 12px; color: #666; }
 .erp-login-title { font-size: 24px; font-weight: 800; color: #111; margin-bottom: 6px; }
 .erp-login-subtitle { font-size: 13px; color: #666; margin-bottom: 28px; }
-.erp-login-demo {
-  background: var(--gray-50);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  margin-bottom: 28px;
-}
-.erp-login-demo h4 { font-size: 12px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-.erp-demo-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.erp-demo-btn {
-  display: flex; align-items: center; gap: 6px;
-  padding: 8px 12px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: #fff;
-  font-size: 12px; font-weight: 600; color: var(--text-primary);
-  cursor: pointer; transition: var(--transition);
-}
-.erp-demo-btn:hover { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
-.erp-demo-btn span { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
 /* =========================================================
    UTILITY CLASSES

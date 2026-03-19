@@ -40,22 +40,6 @@
     <h1 class="erp-login-title">Welcome Back</h1>
     <p class="erp-login-subtitle">Sign in to your account to continue</p>
 
-    <!-- Demo Quick Login -->
-    <div class="erp-login-demo">
-      <h4>Demo Access</h4>
-      <div class="erp-demo-btns">
-        <button class="erp-demo-btn" onclick="demoLogin('admin')">
-          <span style="background:#1a56db"></span> Admin
-        </button>
-        <button class="erp-demo-btn" onclick="demoLogin('teacher')">
-          <span style="background:#10b981"></span> Teacher
-        </button>
-        <button class="erp-demo-btn" onclick="demoLogin('student')">
-          <span style="background:#f59e0b"></span> Student
-        </button>
-      </div>
-    </div>
-
     <!-- Login Form -->
     <div id="login-err" class="erp-login-err">Invalid email or password. Please try again.</div>
     <form id="login-form" onsubmit="handleLogin(event)">
@@ -98,13 +82,6 @@
     }
   }
 
-  function demoLogin(role) {
-    const user = ERPAuth.demoLogin(role);
-    if (user) {
-      const map = { admin:'admin-dashboard.html', teacher:'teacher-dashboard.html', student:'student-dashboard.html' };
-      window.location.href = map[role];
-    }
-  }
 </script>
 </body>
 </html>

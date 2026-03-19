@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -104,7 +104,6 @@
 
               <!-- Action Buttons -->
               <div style="display:flex;gap:8px">
-                <button class="erp-btn erp-btn-ghost erp-btn-sm" style="flex:1" onclick="previewMsg()">Preview</button>
                 <button class="erp-btn erp-btn-primary" style="flex:1" id="send-btn" onclick="sendNotification()">
                   Send Now
                 </button>
@@ -208,11 +207,6 @@
       </div>`).join('');
   }
 
-  function previewMsg() {
-    const msg = document.getElementById('n-message').value;
-    ERPToast.show('Message Preview', msg.slice(0,150)+'...', 'info', 5000);
-  }
-
   async function sendNotification() {
     const msg  = document.getElementById('n-message').value.trim();
     if(!msg) { ERPToast.show('Error','Please enter a message.','error'); return; }
@@ -225,7 +219,6 @@
     // Fire email if channel is email or both
     if (channel === 'email' || channel === 'both') {
       const subject = document.getElementById('n-subject').value || defaultSubjects[selectedType];
-      // For demo: send to all matching student emails
       const targets = getRecipients(recip.value);
       await ERPEmail.sendBulk(targets, subject, r => msg.replace('Student', r.name||'Student'));
     } else {

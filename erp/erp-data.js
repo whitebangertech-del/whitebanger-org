@@ -122,7 +122,7 @@ const ERP_DATA = {
   leads: [
     { id: 'LID001', name: 'Tanisha Roy',    phone: '9876543210', email: 'tanisha@example.com', source: 'Instagram', course: 'Digital Marketing',   stage: 'new',          followUp: '2026-03-18', counselor: 'Admin Priya', notes: 'Interested in combo batch' },
     { id: 'LID002', name: 'Saurav Pandey',  phone: '8765432109', email: 'saurav@example.com',  source: 'Website',   course: 'Software Development', stage: 'contacted',    followUp: '2026-03-17', counselor: 'Admin Priya', notes: 'Called once. Callback needed.' },
-    { id: 'LID003', name: 'Meenakshi Das',  phone: '7654321098', email: 'meenakshi@example.com',source: 'Referral', course: 'UI/UX Design',        stage: 'interested',   followUp: '2026-03-19', counselor: 'Admin Priya', notes: 'Demo class attended' },
+    { id: 'LID003', name: 'Meenakshi Das',  phone: '7654321098', email: 'meenakshi@example.com',source: 'Referral', course: 'UI/UX Design',        stage: 'interested',   followUp: '2026-03-19', counselor: 'Admin Priya', notes: 'Trial class attended' },
     { id: 'LID004', name: 'Raj Tiwari',     phone: '6543210987', email: 'raj@example.com',     source: 'Website',   course: 'Banking & Finance',   stage: 'converted',    followUp: '2026-03-16', counselor: 'Admin Priya', notes: 'Fee paid. Enrolled.' },
     { id: 'LID005', name: 'Simran Kaur',    phone: '5432109876', email: 'simran@example.com',  source: 'Instagram', course: 'Graphic Design',      stage: 'not_interested',followUp: '2026-03-20', counselor: 'Admin Priya', notes: 'Budget constraints' },
     { id: 'LID006', name: 'Dev Malhotra',   phone: '4321098765', email: 'dev@example.com',     source: 'Referral',  course: 'AI & Automation',     stage: 'new',          followUp: '2026-03-21', counselor: 'Admin Priya', notes: 'Walk-in enquiry' },
@@ -180,11 +180,6 @@ const ERPAuth = {
       localStorage.setItem('erp_user', JSON.stringify(user));
       return user;
     }
-    return null;
-  },
-  demoLogin(role) {
-    const user = ERP_DATA.users.find(u => u.role === role);
-    if (user) { localStorage.setItem('erp_user', JSON.stringify(user)); return user; }
     return null;
   },
   logout() { localStorage.removeItem('erp_user'); window.location.href = 'login.html'; },

@@ -1,4 +1,4 @@
-﻿// wb-translations.js
+// wb-translations.js
 var wbTranslations = {
   "en": {
     "int_hero_badge": "✅ Internship for IT Skill Students",
@@ -100,7 +100,7 @@ var wbTranslations = {
 
     // Hero
     "hero_title": "Learn Skills That Actually <span class=\"wb-highlight\">Matters!</span>",
-    "hero_btn": "Join White Banger - Free",
+    "hero_btn": "Join White Banger",
 
     // Accreditation
     "idx_accred_title": "Approvals and Accreditation",

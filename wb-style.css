@@ -14,8 +14,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: introBgFadeOut 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-  animation-delay: 4.4s;
+  /* Multi-animation: fade out and then remove from layout */
+  animation: introBgFadeOut 1s cubic-bezier(0.7, 0, 0.3, 1) forwards,
+             removeFromLayout 0.01s forwards;
+  animation-delay: 4.4s, 5.5s;
+}
+
+/* Additional safety: remove intro from layout after animation */
+@keyframes removeFromLayout {
+  99% {
+    display: flex;
+  }
+  100% {
+    display: none;
+  }
 }
 
 .wb-intro-text {

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Website Assistant - Live Demo</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Demo Controls */
+    .demo-controls {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 999997;
+    }
+
+    .demo-controls h3 {
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .demo-controls button {
+      display: block;
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 8px 16px;
+      background: #4F46E5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+
+    .demo-controls button:hover {
+      background: #4338ca;
+    }
+
+    .demo-controls select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .demo-info {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    /* Hero Section */
+    #hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    #hero p {
+      font-size: 20px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #1f2937;
+    }
+
+    section p {
+      font-size: 18px;
+      color: #6b7280;
+      line-height: 1.8;
+    }
+
+    #about {
+      background: #f9fafb;
+    }
+
+    #services {
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #4F46E5;
+    }
+
+    #courses {
+      background: #f9fafb;
+    }
+
+    .course-list {
+      margin-top: 40px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .course-item {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      border-left: 4px solid #4F46E5;
+    }
+
+    .course-item h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    #pricing {
+      background: white;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .pricing-card {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
+      text-align: center;
+    }
+
+    .pricing-card.featured {
+      border-color: #4F46E5;
+      transform: scale(1.05);
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: bold;
+      color: #4F46E5;
+      margin: 20px 0;
+    }
+
+    #testimonials {
+      background: #f9fafb;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 16px;
+      color: #4b5563;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      color: #1f2937;
+    }
+
+    #contact {
+      background: white;
+      text-align: center;
+    }
+
+    .contact-info {
+      margin-top: 40px;
+    }
+
+    .contact-info a {
+      display: inline-block;
+      margin: 10px 20px;
+      padding: 12px 24px;
+      background: #4F46E5;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .demo-controls {
+        position: static;
+        margin: 20px;
+      }
+
+      #hero h1 {
+        font-size: 32px;
+      }
+
+      section h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+
+  <!-- AI Assistant CSS -->
+  <link rel="stylesheet" href="ai-assistant.css">
+</head>
+<body>
+
+  <!-- Demo Controls -->
+  <div class="demo-controls">
+    <h3>🎮 Demo Controls</h3>
+
+    <button onclick="aiAssistant.show()">📱 Show Assistant</button>
+    <button onclick="aiAssistant.restart()">🔄 Restart Tour</button>
+    <button onclick="aiAssistant.hide()">❌ Hide Assistant</button>
+
+    <select id="lang-select" onchange="changeLanguage(this.value)">
+      <option value="hi">🇮🇳 Hindi</option>
+      <option value="en">🇬🇧 English</option>
+    </select>
+
+    <button onclick="resetTour()">🗑️ Reset Memory</button>
+    <button onclick="viewAnalytics()">📊 View Analytics</button>
+
+    <div class="demo-info">
+      Assistant will auto-start in 2 seconds after page load
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header id="hero">
+    <div>
+      <h1>AI Website Assistant Demo</h1>
+      <p>Experience intelligent website guidance with voice narration, auto-scrolling, and interactive controls</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About This Demo</h2>
+    <p>
+      This is a live demonstration of the AI Website Assistant. The assistant will automatically detect all sections on this page, scroll to them smoothly, highlight them, and explain each section using voice narration in Hindi or English.
+    </p>
+    <p style="margin-top: 20px;">
+      The assistant uses Web Speech API for natural voice synthesis, localStorage for session memory, and smooth CSS animations for an engaging user experience. It's production-ready and can be integrated into any website with just 3 lines of code.
+    </p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>Explore our comprehensive range of digital services designed to help your business grow.</p>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Web Development</h3>
+        <p>Build modern, responsive websites with cutting-edge technologies.</p>
+      </div>
+      <div class="service-card">
+        <h3>Digital Marketing</h3>
+        <p>Grow your online presence with SEO, social media, and content marketing.</p>
+      </div>
+      <div class="service-card">
+        <h3>UI/UX Design</h3>
+        <p>Create beautiful, user-friendly interfaces that convert visitors to customers.</p>
+      </div>
+      <div class="service-card">
+        <h3>Cloud Solutions</h3>
+        <p>Scale your infrastructure with reliable cloud hosting and management.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses">
+    <h2>Available Courses</h2>
+    <p>Learn in-demand skills with our expert-led courses and get placement support.</p>
+
+    <div class="course-list">
+      <div class="course-item">
+        <h3>Software Development</h3>
+        <p>Learn full-stack development with React, Node.js, and modern frameworks. Duration: 6 months</p>
+      </div>
+      <div class="course-item">
+        <h3>Digital Marketing Master</h3>
+        <p>Complete digital marketing from SEO to social media advertising. Duration: 4 months</p>
+      </div>
+      <div class="course-item">
+        <h3>UI/UX Design Pro</h3>
+        <p>Master design principles, Figma, and user research. Duration: 3 months</p>
+      </div>
+      <div class="course-item">
+        <h3>Data Science & AI</h3>
+        <p>Python, machine learning, and artificial intelligence. Duration: 8 months</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing">
+    <h2>Pricing Plans</h2>
+    <p>Choose the plan that best fits your needs. All plans include lifetime access.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <div class="price">₹9,999</div>
+        <p>Perfect for beginners</p>
+        <ul style="text-align: left; margin-top: 20px; color: #6b7280;">
+          <li>1 Course Access</li>
+          <li>Online Classes</li>
+          <li>Basic Support</li>
+          <li>Certificate</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3>Professional</h3>
+        <div class="price">₹24,999</div>
+        <p>Most popular choice</p>
+        <ul style="text-align: left; margin-top: 20px; color: #6b7280;">
+          <li>3 Course Access</li>
+          <li>Live + Recorded</li>
+          <li>Priority Support</li>
+          <li>Placement Assistance</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Enterprise</h3>
+        <div class="price">₹49,999</div>
+        <p>For serious learners</p>
+        <ul style="text-align: left; margin-top: 20px; color: #6b7280;">
+          <li>All Courses Access</li>
+          <li>1-on-1 Mentoring</li>
+          <li>24/7 Support</li>
+          <li>Guaranteed Placement</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>What Our Students Say</h2>
+    <p>Read success stories from our alumni who transformed their careers.</p>
+
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "The AI assistant made navigating the website so easy! I learned about all their courses in just 2 minutes."
+        </div>
+        <div class="testimonial-author">- Rahul Kumar, Student</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "Best training institute in India. The voice-guided tour was amazing and very helpful for understanding everything."
+        </div>
+        <div class="testimonial-author">- Priya Sharma, Digital Marketer</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "I got placed in my dream company after completing the course. The AI guide helped me explore all features easily."
+        </div>
+        <div class="testimonial-author">- Amit Verma, Software Engineer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <p>Ready to start your learning journey? Contact us today!</p>
+
+    <div class="contact-info">
+      <a href="tel:+919728320132">📞 Call: +91 97283-20132</a>
+      <a href="mailto:prikshit@whitebanger.org">✉️ Email Us</a>
+      <a href="https://wa.me/919728320132">💬 WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- AI Assistant JS -->
+  <script src="ai-assistant.js"></script>
+
+  <!-- Initialize Assistant -->
+  <script>
+    // Initialize AI Website Assistant
+    window.aiAssistant = new AIWebsiteAssistant({
+      language: 'hi',
+      autoStart: true,
+      startDelay: 2000,
+      sectionDelay: 5000,
+      voice: 'female',
+      analytics: true,
+
+      // Custom sections with explanations
+      sections: [
+        {
+          name: 'hero',
+          selector: '#hero',
+          explanation: 'यह हमारी वेबसाइट का मुख्य पेज है। यहाँ AI Website Assistant का डेमो है।'
+        },
+        {
+          name: 'about',
+          selector: '#about',
+          explanation: 'यह डेमो सेक्शन है। यहाँ AI Assistant की पूरी जानकारी दी गई है।'
+        },
+        {
+          name: 'services',
+          selector: '#services',
+          explanation: 'यह हमारी सेवाओं का सेक्शन है। हम वेब डेवलपमेंट, डिजिटल मार्केटिंग, और डिज़ाइन सेवाएं देते हैं।'
+        },
+        {
+          name: 'courses',
+          selector: '#courses',
+          explanation: 'यहाँ सभी उपलब्ध कोर्स दिखाए गए हैं। सॉफ्टवेयर डेवलपमेंट से लेकर डेटा साइंस तक।'
+        },
+        {
+          name: 'pricing',
+          selector: '#pricing',
+          explanation: 'यह प्राइसिंग सेक्शन है। तीन प्लान हैं - बेसिक, प्रोफेशनल, और एंटरप्राइज।'
+        },
+        {
+          name: 'testimonials',
+          selector: '#testimonials',
+          explanation: 'यहाँ हमारे छात्रों की सफलता की कहानियां हैं। देखें उनका अनुभव कैसा रहा।'
+        },
+        {
+          name: 'contact',
+          selector: '#contact',
+          explanation: 'यह संपर्क सेक्शन है। यहाँ से आप हमें कॉल, ईमेल, या WhatsApp कर सकते हैं।'
+        }
+      ]
+    });
+
+    // Demo control functions
+    function changeLanguage(lang) {
+      aiAssistant.setLanguage(lang);
+      alert(`Language changed to ${lang === 'hi' ? 'Hindi' : 'English'}`);
+    }
+
+    function resetTour() {
+      localStorage.removeItem('ai_assistant_tour_seen');
+      alert('Tour memory reset! Refresh the page to see intro again.');
+    }
+
+    function viewAnalytics() {
+      const events = JSON.parse(localStorage.getItem('ai_assistant_events') || '[]');
+      console.log('AI Assistant Analytics:', events);
+      alert(`Total events tracked: ${events.length}\nCheck console for details.`);
+    }
+
+    // Log when tour starts
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('%c🤖 AI Website Assistant Demo', 'font-size: 20px; color: #4F46E5; font-weight: bold;');
+      console.log('Use the demo controls in the top-left corner to test features.');
+      console.log('Commands you can try:');
+      console.log('- "go to pricing"');
+      console.log('- "explain services"');
+      console.log('- "show contact"');
+    });
+  </script>
+
+</body>
+</html>

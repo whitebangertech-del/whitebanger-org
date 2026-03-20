@@ -851,6 +851,22 @@
 
   <script src="wb-translations.min.js"></script>
   <script src="wb-script.min.js"></script>
+
+  <!-- AI Website Assistant -->
+  <link rel="stylesheet" href="ai-assistant/ai-assistant.css">
+  <script src="ai-assistant/ai-assistant.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.aiAssistant = new AIWebsiteAssistant({
+        language: 'hi',
+        autoStart: true,
+        startDelay: 3000,
+        sectionDelay: 5000,
+        voice: 'female',
+        analytics: true
+      });
+    });
+  </script>
 </body>
 
 </html>

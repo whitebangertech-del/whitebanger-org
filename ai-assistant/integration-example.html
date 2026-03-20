@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Example - AI Website Assistant</title>
+
+  <!-- Your website's CSS -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- AI Assistant CSS - Add this line -->
+  <link rel="stylesheet" href="ai-assistant.css">
+</head>
+<body>
+
+  <!-- Your website content -->
+  <header id="hero">
+    <h1>Your Website</h1>
+  </header>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Your content here...</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>Your content here...</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Your content here...</p>
+  </section>
+
+  <!-- Your website's JS -->
+  <script src="../script.js"></script>
+
+  <!-- AI Assistant JS - Add this line -->
+  <script src="ai-assistant.js" defer></script>
+
+  <!-- Initialize AI Assistant - Add this block -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.aiAssistant = new AIWebsiteAssistant({
+        language: 'hi',           // Hindi by default
+        autoStart: true,          // Show popup automatically
+        startDelay: 2000,         // Wait 2 seconds
+        sectionDelay: 4000,       // 4 seconds per section
+        voice: 'female',          // Female voice
+        analytics: true           // Track events
+      });
+    });
+  </script>
+
+</body>
+</html>
